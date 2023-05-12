@@ -1,0 +1,222 @@
+openapi: '3.1.0'
+info:
+  version: '1.0.0'
+  title: 'Workr API'
+  description: Create and track workouts
+
+paths:
+  /exercise:
+    get:
+      tags:
+        - exercise
+      summary: Get all available exercises
+      operationId: getExercise
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Exercise'
+    post:
+      tags:
+        - exercise
+      summary: Create a new exercise
+      operationId: createExercise
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Exercise'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exercise'
+  /exercise/{exerciseId}:
+    parameters:
+      - name: exerciseId
+        description: The unique identifier of the exercise
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/ExerciseId'
+    get:
+      tags:
+        - exercise
+      summary: Get exercise by id
+      operationId: getExerciseById
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exercise'
+        '404':
+          description: Exercise not found
+  /gym:
+    post:
+      tags:
+        - gym
+      summary: Create a gym
+      operationId: createGym
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Gym'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gym'
+  /gym/{gymId}:
+    parameters:
+      - name: gymId
+        description: The unique identifier of the gym
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/GymId'
+    get:
+      tags:
+        - gym
+      summary: Get gym details
+      operationId: getGymById
+    put:
+      tags:
+        - gym
+      summary: Update gym details
+      operationId: updateGymById
+    delete:
+      tags:
+        - gym
+      summary: Delete gym
+      operationId: deleteGymById
+  /gym/{gymId}/members:
+    parameters:
+      - name: gymId
+        description: The unique identifier of the gym
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/GymId'
+    get:
+      tags:
+        - gym
+      summary: Get gym members
+      operationId: getGymMembers
+  /gym/{gymId}/members/{memberId}:
+    parameters:
+      - name: gymId
+        description: The unique identifier of the gym
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/GymId'
+      - name: memberId
+        description: The unique identifier of the user
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/UserId'
+    get:
+      tags:
+        - gym
+      summary: Get gym member details
+      operationId: getGymMemberById
+    put:
+      tags:
+        - gym
+      summary: Add user to gym
+      operationId: addUserToGym
+    delete:
+      tags:
+        - gym
+      summary: Remove user from gym
+      operationId: removeGymMember
+
+components:
+  schemas:
+    UserId:
+      description: The unique identifier of a user
+      type: string
+    ExerciseId:
+      description: The unique identifier of an exercise
+      type: string
+    GymId:
+      description: The unique identifier of a gym
+      type: string
+    Muscle:
+      description: Muscles and muscle groups
+      type: string
+      enum:
+        - biceps
+        - triceps
+    Difficulty:
+      description: Difficulty of an exercise or workout
+      type: string
+      enum:
+        - beginner
+        - intermediate
+        - advanced
+    Price:
+      description: Represents a price with quantity and currency
+      type: object
+      properties:
+        quantity:
+          type: number
+        currency:
+          type: string
+    Exercise:
+      type: object
+      required:
+        - name
+        - type
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        instructions:
+          type: array
+          items: string
+        createdBy:
+          $ref: '#/components/schemas/UserId'
+        targetMuscleGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/Muscle'
+        level:
+          $ref: '#/components/schemas/Difficulty'
+    Gym:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          $ref: '#/components/schemas/Price'
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+    User:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string

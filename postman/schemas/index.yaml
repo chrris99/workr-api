@@ -275,6 +275,54 @@ paths:
       responses:
         '204':
           description: No content
+  /user:
+    post:
+      tags:
+        - users
+      summary: Create a new user
+      operationId: createUser
+      responses:
+        '200': 
+          description: OK
+        '400':
+          description: Bad request
+  /user/{userId}:
+    parameters:
+      - name: userId
+        description: The unique identifer of a User
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/UserId'
+    get:
+      tags:
+        - users
+      summary: Get user details
+      operationId: getUserById
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not found
+    put:
+      tags:
+        - users
+      summary: Update user
+      operationId: updateUser
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not found
+    delete:
+      tags:
+        - users
+      summary: Delete user
+      operationId: deleteUser
+      responses:
+        '204':
+          description: No content
+    
 components:
   schemas:
     UserId:

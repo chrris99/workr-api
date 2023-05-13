@@ -61,12 +61,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Exercise'
         '403':
-          description: Unauthorized
+          description: Forbidden
         '404':
           description: Exercise not found
     put:
       tags:
-        - /exercises
+        - exercises
       summary: Update an exercise
       operationId: updateExercise
       responses:
@@ -77,9 +77,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/Exercise'
         '403':
-          description: Unauthorized
+          description: Forbidden
         '404':
           description: Exercise not found
+    delete:
+      tags:
+        - exercises
+      summary: Delete exercise
+      operationId: deleteExercise
+      responses:
+        '204':
+          description: No content
+        '403':
+          description: Forbidden
   /gym:
     post:
       tags:
@@ -99,6 +109,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Gym'
+        '400':
+          description: Bad request
   /gym/{gymId}:
     parameters:
       - name: gymId
@@ -112,16 +124,39 @@ paths:
         - gym
       summary: Get gym details
       operationId: getGymById
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gym'
+        '404':
+          description: Gym not found
     put:
       tags:
         - gym
       summary: Update gym details
       operationId: updateGymById
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gym'
+        '400':
+          description: Bad request
+        '404':
+          description: Gym not found
     delete:
       tags:
         - gym
       summary: Delete gym
       operationId: deleteGymById
+      responses:
+        '204':
+          description: No content
   /gym/{gymId}/members:
     parameters:
       - name: gymId
@@ -135,6 +170,9 @@ paths:
         - gym
       summary: Get gym members
       operationId: getGymMembers
+      responses:
+        '200':
+          description: OK
   /gym/{gymId}/members/{memberId}:
     parameters:
       - name: gymId
@@ -154,16 +192,25 @@ paths:
         - gym
       summary: Get gym member details
       operationId: getGymMemberById
+      responses:
+        '200':
+          description: OK
     put:
       tags:
         - gym
       summary: Add user to gym
       operationId: addUserToGym
+      responses:
+        '200':
+          description: OK
     delete:
       tags:
         - gym
       summary: Remove user from gym
       operationId: removeGymMember
+      responses:
+        '204':
+          description: No content
   /workout:
     get:
       tags:
@@ -185,11 +232,17 @@ paths:
           in: query
           schema:
             type: string
+      responses:
+        '200':
+          description: OK
     post:
       tags:
         - workout
       summary: Create a new workout
       operationId: createWorkout
+      responses:
+        '200':
+          description: OK
   /workout/{workoutId}:
     parameters:
       - name: workoutId
@@ -203,16 +256,25 @@ paths:
         - workout
       summary: Get workout by id
       operationId: getWorkoutById
+      responses:
+        '200':
+          description: OK
     put:
       tags:
         - workout
       summary: Update workout
       operationId: updateWorkout
+      responses:
+        '200':
+          description: OK
     delete:
       tags:
         - workout
       summary: Delete workout
       operationId: deleteWorkout
+      responses:
+        '204':
+          description: No content
 components:
   schemas:
     UserId:

@@ -5,10 +5,10 @@ info:
   description: Create and track workouts
 
 paths:
-  /exercise:
+  /exercises:
     get:
       tags:
-        - exercise
+        - exercises
       summary: Get all available exercises
       operationId: getExercise
       responses:
@@ -22,7 +22,7 @@ paths:
                   $ref: '#/components/schemas/Exercise'
     post:
       tags:
-        - exercise
+        - exercises
       summary: Create a new exercise
       operationId: createExercise
       requestBody:
@@ -38,7 +38,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Exercise'
-  /exercise/{exerciseId}:
+        '400':
+          description: Bad request 
+  /exercises/{exerciseId}:
     parameters:
       - name: exerciseId
         description: The unique identifier of the exercise
@@ -48,7 +50,7 @@ paths:
           $ref: '#/components/schemas/ExerciseId'
     get:
       tags:
-        - exercise
+        - exercises
       summary: Get exercise by id
       operationId: getExerciseById
       responses:
@@ -58,6 +60,24 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Exercise'
+        '403':
+          description: Unauthorized
+        '404':
+          description: Exercise not found
+    put:
+      tags:
+        - /exercises
+      summary: Update an exercise
+      operationId: updateExercise
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exercise'
+        '403':
+          description: Unauthorized
         '404':
           description: Exercise not found
   /gym:
@@ -144,7 +164,55 @@ paths:
         - gym
       summary: Remove user from gym
       operationId: removeGymMember
-
+  /workout:
+    get:
+      tags:
+        - workout
+      summary: Get past workouts
+      parameters:
+        - name: offset
+          description: Offset value 
+          in: query
+          schema:
+            type: number
+        - name: limit
+          description: Number of workouts to query
+          in: query
+          schema:
+            type: number
+        - name: status
+          description: Status of the workouts
+          in: query
+          schema:
+            type: string
+    post:
+      tags:
+        - workout
+      summary: Create a new workout
+      operationId: createWorkout
+  /workout/{workoutId}:
+    parameters:
+      - name: workoutId
+        description: The unique identifer of a workout
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/WorkoutId'
+    get:
+      tags:
+        - workout
+      summary: Get workout by id
+      operationId: getWorkoutById
+    put:
+      tags:
+        - workout
+      summary: Update workout
+      operationId: updateWorkout
+    delete:
+      tags:
+        - workout
+      summary: Delete workout
+      operationId: deleteWorkout
 components:
   schemas:
     UserId:
@@ -155,6 +223,9 @@ components:
       type: string
     GymId:
       description: The unique identifier of a gym
+      type: string
+    WorkoutId:
+      description: The unique identifier of a workout
       type: string
     Muscle:
       description: Muscles and muscle groups

@@ -9,7 +9,7 @@ public sealed class RequestLogger<TRequest> : IPreProcessor<TRequest>
     {
         var logger = ctx.Resolve<ILogger<TRequest>>();
 
-        logger.LogInformation("Receiving {method} {path} request", ctx.Request.Method, ctx.Request.Path.Value);
+        logger.LogInformation("{method} {path} request received", ctx.Request.Method, ctx.Request.Path.Value);
         
         return Task.CompletedTask;
     }

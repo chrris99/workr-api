@@ -2,7 +2,7 @@ namespace Workr.Domain.Exercise;
 
 public static class ExerciseType
 {
-    public static readonly string Repeated = "repeated";
+    public static readonly string Repeated = "Repeated";
     public static readonly string Timed = "timed";
     public static readonly string Tempo = "tempo";
 

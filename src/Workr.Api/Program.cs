@@ -35,6 +35,12 @@ builder.Services.AddAuthentication().AddJwtBearer(options =>
 builder.Services.SwaggerDocument(options =>
 {
     options.AutoTagPathSegmentIndex = 2;
+    options.DocumentSettings = s =>
+    {
+        s.Title = "Workr API";
+        s.Version = "v1";
+    };
+    options.ShortSchemaNames = true;
 });
 
 builder.Services.AddDbContext<ApplicationDbContext>(optionsBuilder =>
@@ -44,7 +50,10 @@ builder.Services.AddRepositories();
 
 var app = builder.Build();
 
-app.UseFastEndpoints();
+app.UseFastEndpoints(config =>
+{
+    config.Endpoints.ShortNames = true;
+});
 
 app.UseAuthentication();
 app.UseAuthorization();

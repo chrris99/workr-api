@@ -2,6 +2,7 @@ using FastEndpoints;
 using Workr.Application;
 using Workr.Application.Repositories;
 using Workr.Web.Features.Exercise.GetExerciseById;
+using Workr.Web.Processors;
 
 namespace Workr.Web.Features.Exercise.CreateExercise;
 
@@ -15,6 +16,8 @@ public sealed class CreateExerciseEndpoint : Endpoint<CreateExerciseRequest, Exe
     {
         Post("/api/exercise");
         Claims("id");
+        Summary(new CreateExerciseSummary());
+        PreProcessors(new RequestLogger<CreateExerciseRequest>());
     }
 
     public override async Task HandleAsync(CreateExerciseRequest req, CancellationToken ct)

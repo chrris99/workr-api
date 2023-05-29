@@ -1,13 +1,11 @@
 using System.Security.Cryptography;
-using System.Text;
 using System.Text.RegularExpressions;
 using FastEndpoints;
-using FastEndpoints.Security;
 using FastEndpoints.Swagger;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Workr.Infrastructure;
+using Workr.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -34,11 +32,15 @@ builder.Services.AddAuthentication().AddJwtBearer(options =>
     };
 });
 
-builder.Services.SwaggerDocument();
+builder.Services.SwaggerDocument(options =>
+{
+    options.AutoTagPathSegmentIndex = 2;
+});
 
 builder.Services.AddDbContext<ApplicationDbContext>(optionsBuilder =>
     optionsBuilder.UseNpgsql(configuration.GetConnectionString("Postgres"))
 );
+builder.Services.AddRepositories();
 
 var app = builder.Build();
 

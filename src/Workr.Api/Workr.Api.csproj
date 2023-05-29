@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Workr.Web</RootNamespace>
+    <NoWarn>CA2016</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="[Features]\Workout" />
+    <Folder Include="Features\Workout" />
   </ItemGroup>
 
   <ItemGroup>

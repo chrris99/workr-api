@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Workr.Application\Workr.Application.csproj" />
       <ProjectReference Include="..\Workr.Domain\Workr.Domain.csproj" />
     </ItemGroup>
 

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Workr.Infrastructure.Persistence;
@@ -12,9 +13,11 @@ using Workr.Infrastructure.Persistence;
 namespace Workr.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230529184509_AddWorkoutPlan")]
+    partial class AddWorkoutPlan
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -150,30 +153,6 @@ namespace Workr.Infrastructure.Migrations
                     b.ToTable("WorkoutPlans");
                 });
 
-            modelBuilder.Entity("Workr.Domain.WorkoutTemplate", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("WorkoutTemplates", (string)null);
-                });
-
             modelBuilder.Entity("Workr.Domain.Workout", b =>
                 {
                     b.HasOne("Workr.Domain.WorkoutPlan", null)
@@ -200,7 +179,7 @@ namespace Workr.Infrastructure.Migrations
 
                             b1.HasKey("WorkoutId", "Id");
 
-                            b1.ToTable("WorkoutBlocks", (string)null);
+                            b1.ToTable("WorkoutBlock");
 
                             b1.WithOwner()
                                 .HasForeignKey("WorkoutId");
@@ -245,7 +224,7 @@ namespace Workr.Infrastructure.Migrations
 
                                     b2.HasIndex("ExerciseId");
 
-                                    b2.ToTable("WorkoutItems", (string)null);
+                                    b2.ToTable("WorkoutItem");
 
                                     b2.HasOne("Workr.Domain.Exercise", "Exercise")
                                         .WithMany()
@@ -263,82 +242,6 @@ namespace Workr.Infrastructure.Migrations
                         });
 
                     b.Navigation("Blocks");
-                });
-
-            modelBuilder.Entity("Workr.Domain.WorkoutTemplate", b =>
-                {
-                    b.OwnsMany("Workr.Domain.WorkoutBlockTemplate", "BlockTemplates", b1 =>
-                        {
-                            b1.Property<Guid>("WorkoutTemplateId")
-                                .HasColumnType("uuid");
-
-                            b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("integer");
-
-                            NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b1.Property<int>("Id"));
-
-                            b1.Property<int>("Order")
-                                .HasColumnType("integer");
-
-                            b1.HasKey("WorkoutTemplateId", "Id");
-
-                            b1.ToTable("WorkoutBlockTemplates", (string)null);
-
-                            b1.WithOwner()
-                                .HasForeignKey("WorkoutTemplateId");
-
-                            b1.OwnsMany("Workr.Domain.WorkoutItemTemplate", "ItemTemplates", b2 =>
-                                {
-                                    b2.Property<Guid>("WorkoutBlockTemplateWorkoutTemplateId")
-                                        .HasColumnType("uuid");
-
-                                    b2.Property<int>("WorkoutBlockTemplateId")
-                                        .HasColumnType("integer");
-
-                                    b2.Property<int>("Id")
-                                        .ValueGeneratedOnAdd()
-                                        .HasColumnType("integer");
-
-                                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b2.Property<int>("Id"));
-
-                                    b2.Property<string>("Comment")
-                                        .HasColumnType("text");
-
-                                    b2.Property<Guid>("ExerciseId")
-                                        .HasColumnType("uuid");
-
-                                    b2.Property<int>("Order")
-                                        .HasColumnType("integer");
-
-                                    b2.Property<int>("Reps")
-                                        .HasColumnType("integer");
-
-                                    b2.Property<int>("Sets")
-                                        .HasColumnType("integer");
-
-                                    b2.HasKey("WorkoutBlockTemplateWorkoutTemplateId", "WorkoutBlockTemplateId", "Id");
-
-                                    b2.HasIndex("ExerciseId");
-
-                                    b2.ToTable("WorkoutItemTemplates", (string)null);
-
-                                    b2.HasOne("Workr.Domain.Exercise", "Exercise")
-                                        .WithMany()
-                                        .HasForeignKey("ExerciseId")
-                                        .OnDelete(DeleteBehavior.Cascade)
-                                        .IsRequired();
-
-                                    b2.WithOwner()
-                                        .HasForeignKey("WorkoutBlockTemplateWorkoutTemplateId", "WorkoutBlockTemplateId");
-
-                                    b2.Navigation("Exercise");
-                                });
-
-                            b1.Navigation("ItemTemplates");
-                        });
-
-                    b.Navigation("BlockTemplates");
                 });
 
             modelBuilder.Entity("Workr.Domain.WorkoutPlan", b =>

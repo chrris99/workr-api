@@ -1,8 +1,8 @@
 using FastEndpoints;
-using Workr.Application;
 using Workr.Application.Repositories;
+using Workr.Web.Processors;
 
-namespace Workr.Web.Features.Exercise.DeleteExercise;
+namespace Workr.Web.Features.ExerciseSlice.DeleteExercise;
 
 public sealed class DeleteExerciseEndpoint : EndpointWithoutRequest
 {
@@ -13,6 +13,7 @@ public sealed class DeleteExerciseEndpoint : EndpointWithoutRequest
     public override void Configure()
     {
         Delete("api/exercise/{id}");
+        PreProcessors(new RequestLogger<EmptyRequest>());
     }
 
     public override async Task HandleAsync(CancellationToken ct)

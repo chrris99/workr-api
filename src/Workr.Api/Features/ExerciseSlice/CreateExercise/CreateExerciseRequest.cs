@@ -1,16 +1,14 @@
 using FastEndpoints;
 
-namespace Workr.Web.Features.Exercise.UpdateExercise;
+namespace Workr.Web.Features.ExerciseSlice.CreateExercise;
 
-public sealed class UpdateExerciseRequest
+public sealed class CreateExerciseRequest
 {
-    [BindFrom("id")]
-    public Guid Id { get; set; }
     public string Name { get; set; }
     public string TargetMuscleGroup { get; set; }
     public string? Description { get; set; }
     public string? ForceType { get; set; }
-    public string? ImageUrl { get; set; }
+    public string? Type { get; set; }
     public List<string>? Instructions { get; set; }
     public List<string>? SecondaryMuscleGroups { get; set; }
 

@@ -1,4 +1,4 @@
-namespace Workr.Web.Features.Exercise;
+namespace Workr.Web.Features.ExerciseSlice;
 
 public record ExerciseResponse(
     string Id,

@@ -1,9 +1,8 @@
 using FastEndpoints;
-using Workr.Application;
 using Workr.Application.Repositories;
 using Workr.Web.Processors;
 
-namespace Workr.Web.Features.Exercise.GetExercises;
+namespace Workr.Web.Features.ExerciseSlice.GetExercises;
 
 public sealed class GetExercisesEndpoint : EndpointWithoutRequest<List<ExerciseResponse>, ExerciseResponseMapper>
 {
@@ -26,8 +25,8 @@ public sealed class GetExercisesEndpoint : EndpointWithoutRequest<List<ExerciseR
         
         ThrowIfAnyErrors();
 
-        var exerciseResponses = result.Value.
-            Select(e => Map.FromEntity(e))
+        var exerciseResponses = result.Value
+            .Select(e => Map.FromEntity(e))
             .ToList();
 
         await SendAsync(exerciseResponses);

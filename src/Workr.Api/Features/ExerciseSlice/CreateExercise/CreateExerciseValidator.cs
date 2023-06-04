@@ -1,9 +1,8 @@
 using FastEndpoints;
 using FluentValidation;
-using Workr.Domain;
 using Workr.Domain.Exercise;
 
-namespace Workr.Web.Features.Exercise.CreateExercise;
+namespace Workr.Web.Features.ExerciseSlice.CreateExercise;
 
 public sealed class CreateExerciseValidator : Validator<CreateExerciseRequest>
 {

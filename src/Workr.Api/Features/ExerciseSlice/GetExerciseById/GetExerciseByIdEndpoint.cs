@@ -1,9 +1,9 @@
 using FastEndpoints;
-using Workr.Application;
 using Workr.Application.Repositories;
 using Workr.Domain.Errors;
+using Workr.Web.Processors;
 
-namespace Workr.Web.Features.Exercise.GetExerciseById;
+namespace Workr.Web.Features.ExerciseSlice.GetExerciseById;
 
 public sealed class GetExerciseByIdEndpoint : EndpointWithoutRequest<ExerciseResponse, ExerciseResponseMapper>
 {
@@ -14,6 +14,7 @@ public sealed class GetExerciseByIdEndpoint : EndpointWithoutRequest<ExerciseRes
     public override void Configure()
     {
         Get("/api/exercise/{id}");
+        PreProcessors(new RequestLogger<EmptyRequest>());
     }
 
     public override async Task HandleAsync(CancellationToken ct)

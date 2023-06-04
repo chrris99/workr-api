@@ -1,10 +1,11 @@
 using FastEndpoints;
+using Workr.Domain.Exercise;
 
-namespace Workr.Web.Features.Exercise.UpdateExercise;
+namespace Workr.Web.Features.ExerciseSlice.UpdateExercise;
 
-public sealed class UpdateExerciseMapper : Mapper<UpdateExerciseRequest, ExerciseResponse, Domain.Exercise.Exercise>
+public sealed class UpdateExerciseMapper : Mapper<UpdateExerciseRequest, ExerciseResponse, Exercise>
 {
-    public override Domain.Exercise.Exercise ToEntity(UpdateExerciseRequest r) => new()
+    public override Exercise ToEntity(UpdateExerciseRequest r) => new()
     {
         Id = r.Id,
         Name = r.Name,

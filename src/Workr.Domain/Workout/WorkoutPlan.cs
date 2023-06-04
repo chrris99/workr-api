@@ -19,5 +19,5 @@ public sealed class WorkoutPlan
     public int NumberOfDays { get; set; }
     public int CurrentDay { get; set; }
 
-    public List<Domain.Workout.Workout> Workouts { get; set; }
+    public List<Workout> Workouts { get; set; }
 }

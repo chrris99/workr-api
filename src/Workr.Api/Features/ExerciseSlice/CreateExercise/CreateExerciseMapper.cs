@@ -1,6 +1,6 @@
 using FastEndpoints;
 
-namespace Workr.Web.Features.Exercise.CreateExercise;
+namespace Workr.Web.Features.ExerciseSlice.CreateExercise;
 
 public sealed class CreateExerciseMapper : Mapper<CreateExerciseRequest, ExerciseResponse, Domain.Exercise.Exercise>
 {

@@ -1,10 +1,9 @@
 using FastEndpoints;
-using Workr.Application;
 using Workr.Application.Repositories;
-using Workr.Web.Features.Exercise.GetExerciseById;
+using Workr.Web.Features.ExerciseSlice.GetExerciseById;
 using Workr.Web.Processors;
 
-namespace Workr.Web.Features.Exercise.CreateExercise;
+namespace Workr.Web.Features.ExerciseSlice.CreateExercise;
 
 public sealed class CreateExerciseEndpoint : Endpoint<CreateExerciseRequest, ExerciseResponse, CreateExerciseMapper>
 {

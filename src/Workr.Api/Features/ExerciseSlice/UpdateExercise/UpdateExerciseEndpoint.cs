@@ -1,8 +1,8 @@
 using FastEndpoints;
-using Workr.Application;
 using Workr.Application.Repositories;
+using Workr.Web.Processors;
 
-namespace Workr.Web.Features.Exercise.UpdateExercise;
+namespace Workr.Web.Features.ExerciseSlice.UpdateExercise;
 
 public sealed class UpdateExerciseEndpoint : Endpoint<UpdateExerciseRequest, ExerciseResponse, UpdateExerciseMapper>
 {
@@ -13,7 +13,8 @@ public sealed class UpdateExerciseEndpoint : Endpoint<UpdateExerciseRequest, Exe
     public override void Configure()
     {
         Put("/api/exercise/{id}");
-        Claims("id");
+        Claims("id"); 
+        PreProcessors(new RequestLogger<UpdateExerciseRequest>());
     }
 
     public override async Task HandleAsync(UpdateExerciseRequest req, CancellationToken ct)

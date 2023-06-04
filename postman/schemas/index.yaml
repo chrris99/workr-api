@@ -5,7 +5,7 @@ info:
   description: Create and track workouts
 
 paths:
-  /exercises:
+  /exercise:
     get:
       tags:
         - exercises
@@ -40,7 +40,7 @@ paths:
                 $ref: '#/components/schemas/Exercise'
         '400':
           description: Bad request 
-  /exercises/{exerciseId}:
+  /exercise/{exerciseId}:
     parameters:
       - name: exerciseId
         description: The unique identifier of the exercise
@@ -379,25 +379,3 @@ components:
             $ref: '#/components/schemas/Muscle'
         level:
           $ref: '#/components/schemas/Difficulty'
-    Gym:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        price:
-          $ref: '#/components/schemas/Price'
-        members:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
-    User:
-      type: object
-      properties:
-        name:
-          type: string
-        email:
-          type: string
-        password:
-          type: string

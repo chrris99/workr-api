@@ -1,0 +1,2200 @@
+{
+	"info": {
+		"_postman_id": "019325c2-24b5-4441-9320-e336aa4af1c9",
+		"name": "Workr API Collection",
+		"description": "Create and track workouts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "13663443-019325c2-24b5-4441-9320-e336aa4af1c9"
+	},
+	"item": [
+		{
+			"name": "exercise",
+			"item": [
+				{
+					"name": "{exerciseId}",
+					"item": [
+						{
+							"name": "Get exercise by id",
+							"id": "ac38da23-1afb-4d32-9130-d4ad2cab0dbb",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/exercise/:exerciseId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"exercise",
+										":exerciseId"
+									],
+									"variable": [
+										{
+											"key": "exerciseId",
+											"value": "<string>",
+											"description": "(Required) The unique identifier of the exercise"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "287583d4-c447-4a2d-a61f-aef474c3a7de",
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:5117/api/exercise/:exerciseId",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5117",
+											"path": [
+												"api",
+												"exercise",
+												":exerciseId"
+											],
+											"variable": [
+												{
+													"key": "exerciseId",
+													"value": "<string>",
+													"description": "(Required) The unique identifier of the exercise"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"createdBy\": \"<string>\",\n  \"targetMuscleGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"level\": \"<string>\"\n}"
+								},
+								{
+									"id": "3da01111-810a-4f77-a770-d5f9281371fd",
+									"name": "Forbidden",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/exercise/:exerciseId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"exercise",
+												":exerciseId"
+											],
+											"variable": [
+												{
+													"key": "exerciseId",
+													"value": "<string>",
+													"description": "(Required) The unique identifier of the exercise"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"id": "94a78037-24c8-46b7-8c1f-d6af73771993",
+									"name": "Exercise not found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/exercise/:exerciseId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"exercise",
+												":exerciseId"
+											],
+											"variable": [
+												{
+													"key": "exerciseId",
+													"value": "<string>",
+													"description": "(Required) The unique identifier of the exercise"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Update an exercise",
+							"id": "5a147cd6-58fe-4395-b9dd-296c2aa057b6",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/exercise/:exerciseId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"exercise",
+										":exerciseId"
+									],
+									"variable": [
+										{
+											"key": "exerciseId",
+											"value": "<string>",
+											"description": "(Required) The unique identifier of the exercise"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "2870e77f-6f65-4c06-974e-37296d2009cf",
+									"name": "OK",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:5117/api/exercise/:exerciseId",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5117",
+											"path": [
+												"api",
+												"exercise",
+												":exerciseId"
+											],
+											"variable": [
+												{
+													"key": "exerciseId",
+													"value": "<string>",
+													"description": "(Required) The unique identifier of the exercise"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"createdBy\": \"<string>\",\n  \"targetMuscleGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"level\": \"<string>\"\n}"
+								},
+								{
+									"id": "805e6279-c05f-46c7-9534-e4fe30646cc6",
+									"name": "Forbidden",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/exercise/:exerciseId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"exercise",
+												":exerciseId"
+											],
+											"variable": [
+												{
+													"key": "exerciseId",
+													"value": "<string>",
+													"description": "(Required) The unique identifier of the exercise"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"id": "d7bbfe2e-b24d-43fd-8a02-04edc98c5fb1",
+									"name": "Exercise not found",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/exercise/:exerciseId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"exercise",
+												":exerciseId"
+											],
+											"variable": [
+												{
+													"key": "exerciseId",
+													"value": "<string>",
+													"description": "(Required) The unique identifier of the exercise"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Delete exercise",
+							"id": "ad0ae8e9-1e37-4099-968e-c1713cc52d5f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/exercise/:exerciseId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"exercise",
+										":exerciseId"
+									],
+									"variable": [
+										{
+											"key": "exerciseId",
+											"value": "<string>",
+											"description": "(Required) The unique identifier of the exercise"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "e727c983-c9f3-486c-abdf-ee055c846e8d",
+									"name": "No content",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:5117/api/exercise/:exerciseId",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5117",
+											"path": [
+												"api",
+												"exercise",
+												":exerciseId"
+											],
+											"variable": [
+												{
+													"key": "exerciseId",
+													"value": "<string>",
+													"description": "(Required) The unique identifier of the exercise"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"id": "857b0fee-b802-4940-891f-ff5b5ceeb2fd",
+									"name": "Forbidden",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/exercise/:exerciseId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"exercise",
+												":exerciseId"
+											],
+											"variable": [
+												{
+													"key": "exerciseId",
+													"value": "<string>",
+													"description": "(Required) The unique identifier of the exercise"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					],
+					"id": "58c42235-4ac8-4864-922f-55836252944a"
+				},
+				{
+					"name": "Get all available exercises",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e4bb77e0-3a91-49ec-95d9-b47d8ef0a4c8",
+								"exec": [
+									"pm.test(\"response must be valid and have a body\", function () {",
+									"     pm.response.to.be.ok;",
+									"     pm.response.to.be.withBody;",
+									"     pm.response.to.be.json;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "64bb46e6-bbbd-4a43-b29a-126ac8f655ea",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/exercise",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"exercise"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "eb4b3510-9130-4927-b729-7e12551fdd30",
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5117/api/exercise",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5117",
+									"path": [
+										"api",
+										"exercise"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"createdBy\": \"<string>\",\n    \"targetMuscleGroups\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"level\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"createdBy\": \"<string>\",\n    \"targetMuscleGroups\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"level\": \"<string>\"\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "Create a new exercise",
+					"id": "bd20e48a-d3d7-4411-8242-33b3b1006d7d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"createdBy\": \"<string>\",\n  \"targetMuscleGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"level\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/exercise",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"exercise"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "bac45f27-e4db-435a-b0f4-f5bc8f1dd147",
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"createdBy\": \"<string>\",\n  \"targetMuscleGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"level\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5117/api/exercise",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5117",
+									"path": [
+										"api",
+										"exercise"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"createdBy\": \"<string>\",\n  \"targetMuscleGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"level\": \"<string>\"\n}"
+						},
+						{
+							"id": "fbe94296-3174-474c-9ac6-616703038efc",
+							"name": "Bad request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"createdBy\": \"<string>\",\n  \"targetMuscleGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"level\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/exercise",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"exercise"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"id": "f4e6a6b1-89d7-40f3-9783-36ca5357657f"
+		},
+		{
+			"name": "gym",
+			"item": [
+				{
+					"name": "{gymId}",
+					"item": [
+						{
+							"name": "members",
+							"item": [
+								{
+									"name": "{memberId}",
+									"item": [
+										{
+											"name": "Get gym member details",
+											"id": "d87bce79-f830-43ab-aa2d-799d39c084e1",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/gym/:gymId/members/:memberId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"gym",
+														":gymId",
+														"members",
+														":memberId"
+													],
+													"variable": [
+														{
+															"key": "gymId",
+															"value": "<string>",
+															"description": "(Required) The unique identifier of the gym"
+														},
+														{
+															"key": "memberId",
+															"value": "<string>",
+															"description": "(Required) The unique identifier of the user"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"id": "2dfece69-0440-4f0a-aa81-203a71e895cd",
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "http://localhost:5117/api/gym/:gymId/members/:memberId",
+															"protocol": "http",
+															"host": [
+																"localhost"
+															],
+															"port": "5117",
+															"path": [
+																"api",
+																"gym",
+																":gymId",
+																"members",
+																":memberId"
+															],
+															"variable": [
+																{
+																	"key": "gymId",
+																	"value": "<string>",
+																	"description": "(Required) The unique identifier of the gym"
+																},
+																{
+																	"key": "memberId",
+																	"value": "<string>",
+																	"description": "(Required) The unique identifier of the user"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "text/plain"
+														}
+													],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										},
+										{
+											"name": "Add user to gym",
+											"id": "48f41f92-f2d9-4d81-af3c-b399103aca58",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/gym/:gymId/members/:memberId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"gym",
+														":gymId",
+														"members",
+														":memberId"
+													],
+													"variable": [
+														{
+															"key": "gymId",
+															"value": "<string>",
+															"description": "(Required) The unique identifier of the gym"
+														},
+														{
+															"key": "memberId",
+															"value": "<string>",
+															"description": "(Required) The unique identifier of the user"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"id": "ed955811-f025-4d98-85fa-95d7d282f4df",
+													"name": "OK",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"url": {
+															"raw": "http://localhost:5117/api/gym/:gymId/members/:memberId",
+															"protocol": "http",
+															"host": [
+																"localhost"
+															],
+															"port": "5117",
+															"path": [
+																"api",
+																"gym",
+																":gymId",
+																"members",
+																":memberId"
+															],
+															"variable": [
+																{
+																	"key": "gymId",
+																	"value": "<string>",
+																	"description": "(Required) The unique identifier of the gym"
+																},
+																{
+																	"key": "memberId",
+																	"value": "<string>",
+																	"description": "(Required) The unique identifier of the user"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "text/plain"
+														}
+													],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										},
+										{
+											"name": "Remove user from gym",
+											"id": "d942c526-36da-49bd-af01-ee7f60bade8b",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/gym/:gymId/members/:memberId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"gym",
+														":gymId",
+														"members",
+														":memberId"
+													],
+													"variable": [
+														{
+															"key": "gymId",
+															"value": "<string>",
+															"description": "(Required) The unique identifier of the gym"
+														},
+														{
+															"key": "memberId",
+															"value": "<string>",
+															"description": "(Required) The unique identifier of the user"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"id": "1f5f45ea-4133-47be-983f-5d735f1f63bd",
+													"name": "No content",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "http://localhost:5117/api/gym/:gymId/members/:memberId",
+															"protocol": "http",
+															"host": [
+																"localhost"
+															],
+															"port": "5117",
+															"path": [
+																"api",
+																"gym",
+																":gymId",
+																"members",
+																":memberId"
+															],
+															"variable": [
+																{
+																	"key": "gymId",
+																	"value": "<string>",
+																	"description": "(Required) The unique identifier of the gym"
+																},
+																{
+																	"key": "memberId",
+																	"value": "<string>",
+																	"description": "(Required) The unique identifier of the user"
+																}
+															]
+														}
+													},
+													"status": "No Content",
+													"code": 204,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "text/plain"
+														}
+													],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									],
+									"id": "3fc4a316-8771-4566-8b4a-42eaaad805c6"
+								},
+								{
+									"name": "Get gym members",
+									"id": "61361932-0e47-4a4a-a402-5598f0694695",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/gym/:gymId/members",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"gym",
+												":gymId",
+												"members"
+											],
+											"variable": [
+												{
+													"key": "gymId",
+													"value": "<string>",
+													"description": "(Required) The unique identifier of the gym"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"id": "3a536b39-051c-4c4e-aefe-5bbc8f14b98f",
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:5117/api/gym/:gymId/members",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "5117",
+													"path": [
+														"api",
+														"gym",
+														":gymId",
+														"members"
+													],
+													"variable": [
+														{
+															"key": "gymId",
+															"value": "<string>",
+															"description": "(Required) The unique identifier of the gym"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							],
+							"id": "5b62989e-57a8-42b6-bf6d-50d69ea466a7"
+						},
+						{
+							"name": "Get gym details",
+							"id": "89304d18-f0d0-4e3f-8426-37b68bcaf704",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/gym/:gymId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"gym",
+										":gymId"
+									],
+									"variable": [
+										{
+											"key": "gymId",
+											"value": "<string>",
+											"description": "(Required) The unique identifier of the gym"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "483f5aa4-adc0-499e-8e0c-6770e9374091",
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:5117/api/gym/:gymId",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5117",
+											"path": [
+												"api",
+												"gym",
+												":gymId"
+											],
+											"variable": [
+												{
+													"key": "gymId",
+													"value": "<string>",
+													"description": "(Required) The unique identifier of the gym"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"id": "e108ebee-1ae2-4735-a096-7458ec73df3b",
+									"name": "Gym not found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/gym/:gymId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"gym",
+												":gymId"
+											],
+											"variable": [
+												{
+													"key": "gymId",
+													"value": "<string>",
+													"description": "(Required) The unique identifier of the gym"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Update gym details",
+							"id": "8a9aa5b3-d6ba-4880-b691-8507e084023f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/gym/:gymId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"gym",
+										":gymId"
+									],
+									"variable": [
+										{
+											"key": "gymId",
+											"value": "<string>",
+											"description": "(Required) The unique identifier of the gym"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "2d13e5f3-cfc1-44a8-ac84-5753737248dd",
+									"name": "OK",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:5117/api/gym/:gymId",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5117",
+											"path": [
+												"api",
+												"gym",
+												":gymId"
+											],
+											"variable": [
+												{
+													"key": "gymId",
+													"value": "<string>",
+													"description": "(Required) The unique identifier of the gym"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								},
+								{
+									"id": "495fea8f-d037-47a2-a035-7b402627aa01",
+									"name": "Bad request",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/gym/:gymId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"gym",
+												":gymId"
+											],
+											"variable": [
+												{
+													"key": "gymId",
+													"value": "<string>",
+													"description": "(Required) The unique identifier of the gym"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"id": "a54f91d0-682c-4eec-a81c-5a402c2dfa76",
+									"name": "Gym not found",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/gym/:gymId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"gym",
+												":gymId"
+											],
+											"variable": [
+												{
+													"key": "gymId",
+													"value": "<string>",
+													"description": "(Required) The unique identifier of the gym"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Delete gym",
+							"id": "29fb9e01-7e18-437c-9583-e3bb60c1d22e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/gym/:gymId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"gym",
+										":gymId"
+									],
+									"variable": [
+										{
+											"key": "gymId",
+											"value": "<string>",
+											"description": "(Required) The unique identifier of the gym"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "33b09915-aa6a-4f88-ab30-5442b752b927",
+									"name": "No content",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:5117/api/gym/:gymId",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5117",
+											"path": [
+												"api",
+												"gym",
+												":gymId"
+											],
+											"variable": [
+												{
+													"key": "gymId",
+													"value": "<string>",
+													"description": "(Required) The unique identifier of the gym"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					],
+					"id": "b057278a-151a-4262-930b-6ed06e3cb31d"
+				},
+				{
+					"name": "Create a gym",
+					"id": "e3ab04f1-8b55-425f-8351-216210e7d84c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/gym",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"gym"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "7619c90b-c14e-470a-8830-45cf98b30958",
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5117/api/gym",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5117",
+									"path": [
+										"api",
+										"gym"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						},
+						{
+							"id": "420ff40d-7081-463f-b8cc-7ea67b836363",
+							"name": "Bad request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/gym",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"gym"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"id": "378fc687-79d2-4926-a283-195d1e599bfd"
+		},
+		{
+			"name": "workout",
+			"item": [
+				{
+					"name": "{workoutId}",
+					"item": [
+						{
+							"name": "Get workout by id",
+							"id": "47cce3fb-858d-4dcf-8d87-9897e46d17f1",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/workout/:workoutId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"workout",
+										":workoutId"
+									],
+									"variable": [
+										{
+											"key": "workoutId",
+											"value": "<string>",
+											"description": "(Required) The unique identifer of a workout"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "8b897f1b-7ada-4c56-9cea-b42017278bf1",
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:5117/api/workout/:workoutId",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5117",
+											"path": [
+												"api",
+												"workout",
+												":workoutId"
+											],
+											"variable": [
+												{
+													"key": "workoutId",
+													"value": "<string>",
+													"description": "(Required) The unique identifer of a workout"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Update workout",
+							"id": "7cc1969b-3ff7-4ca3-b449-dd51035950a8",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/workout/:workoutId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"workout",
+										":workoutId"
+									],
+									"variable": [
+										{
+											"key": "workoutId",
+											"value": "<string>",
+											"description": "(Required) The unique identifer of a workout"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "0e48b819-a80a-47a7-945c-6cf5f26ce4bb",
+									"name": "OK",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:5117/api/workout/:workoutId",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5117",
+											"path": [
+												"api",
+												"workout",
+												":workoutId"
+											],
+											"variable": [
+												{
+													"key": "workoutId",
+													"value": "<string>",
+													"description": "(Required) The unique identifer of a workout"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Delete workout",
+							"id": "c7becd0b-a7a0-4ec8-9c58-a547f7cf1262",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/workout/:workoutId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"workout",
+										":workoutId"
+									],
+									"variable": [
+										{
+											"key": "workoutId",
+											"value": "<string>",
+											"description": "(Required) The unique identifer of a workout"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "22720584-b4a2-4801-8387-ecce645e23da",
+									"name": "No content",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:5117/api/workout/:workoutId",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5117",
+											"path": [
+												"api",
+												"workout",
+												":workoutId"
+											],
+											"variable": [
+												{
+													"key": "workoutId",
+													"value": "<string>",
+													"description": "(Required) The unique identifer of a workout"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					],
+					"id": "6bc098e2-cadc-47ad-8a6d-eee841b20732"
+				},
+				{
+					"name": "Get past workouts",
+					"id": "136bfb5f-8090-45e2-93d4-e9bc1017e60d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/workout?offset=<number>&limit=<number>&status=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"workout"
+							],
+							"query": [
+								{
+									"key": "offset",
+									"value": "<number>",
+									"description": "Offset value"
+								},
+								{
+									"key": "limit",
+									"value": "<number>",
+									"description": "Number of workouts to query"
+								},
+								{
+									"key": "status",
+									"value": "<string>",
+									"description": "Status of the workouts"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "3cbbaae8-69a8-4ba9-b54e-7ea9cbd60ff3",
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5117/api/workout?offset=<number>&limit=<number>&status=<string>",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5117",
+									"path": [
+										"api",
+										"workout"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "<number>"
+										},
+										{
+											"key": "limit",
+											"value": "<number>"
+										},
+										{
+											"key": "status",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Create a new workout",
+					"id": "26912f10-1c8b-45fb-8932-ca2007c80466",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/workout",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"workout"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "783cacb8-79b9-49a3-a68b-28d1f83aeb98",
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5117/api/workout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5117",
+									"path": [
+										"api",
+										"workout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"id": "8f7a8cd7-dbe7-4589-8d9e-8dd972ae02b9"
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "{userId}",
+					"item": [
+						{
+							"name": "Get user details",
+							"id": "8916846e-686b-462e-bc4b-6d3f54d96b91",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/user/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "<string>",
+											"description": "(Required) The unique identifer of a User"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "f9759d93-d5fb-460e-a712-fc291884e815",
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:5117/api/user/:userId",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5117",
+											"path": [
+												"api",
+												"user",
+												":userId"
+											],
+											"variable": [
+												{
+													"key": "userId",
+													"value": "<string>",
+													"description": "(Required) The unique identifer of a User"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"id": "3119b570-782a-44e8-85f6-fac033db3d8c",
+									"name": "Not found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/user/:userId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"user",
+												":userId"
+											],
+											"variable": [
+												{
+													"key": "userId",
+													"value": "<string>",
+													"description": "(Required) The unique identifer of a User"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Update user",
+							"id": "bd01cc34-88cc-45b6-8ef3-9e11367ccce5",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/user/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "<string>",
+											"description": "(Required) The unique identifer of a User"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "9ec2d0e9-2e3b-43f1-bdde-ed48a8cc353b",
+									"name": "OK",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:5117/api/user/:userId",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5117",
+											"path": [
+												"api",
+												"user",
+												":userId"
+											],
+											"variable": [
+												{
+													"key": "userId",
+													"value": "<string>",
+													"description": "(Required) The unique identifer of a User"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"id": "0147cee5-1034-4fc9-9518-57481e4c7bbf",
+									"name": "Not found",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/user/:userId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"user",
+												":userId"
+											],
+											"variable": [
+												{
+													"key": "userId",
+													"value": "<string>",
+													"description": "(Required) The unique identifer of a User"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Delete user",
+							"id": "03201419-bc3f-4dd7-b3e4-c6964db75c95",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/user/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "<string>",
+											"description": "(Required) The unique identifer of a User"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "07ba76be-ade3-403f-993f-551d7b90a965",
+									"name": "No content",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:5117/api/user/:userId",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5117",
+											"path": [
+												"api",
+												"user",
+												":userId"
+											],
+											"variable": [
+												{
+													"key": "userId",
+													"value": "<string>",
+													"description": "(Required) The unique identifer of a User"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					],
+					"id": "98f0bb7d-dac2-4eb5-8d16-79c5f6cd18f2"
+				},
+				{
+					"name": "Create a new user",
+					"id": "d154a4b2-735e-4383-9e4a-d8fec5648e3b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "977ccd94-b793-4af9-87c7-ff0d16949501",
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5117/api/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5117",
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"id": "100c6c8d-a4ae-4bf1-8c87-0818f47fa7dc",
+							"name": "Bad request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"id": "a402ef95-8b33-4051-b47e-df1725350081"
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6Imluc18yUTBobER6QXR1aUVBWjZVUENWdms1Z2xMZGQiLCJ0eXAiOiJKV1QifQ.eyJlbWFpbCI6ImNvbmZvcnRpLmNocmlzdGlhbkBnbWFpbC5jb20iLCJleHAiOjIwMDA3NTAzMDAsImlhdCI6MTY4NTM5MDMwMCwiaWQiOiJ1c2VyXzJROHVjRTlGN3ZLZnBHc0hBbnFRRGFDck9wVyIsImlzcyI6Imh0dHBzOi8vZmFzdC1zbG90aC05NS5jbGVyay5hY2NvdW50cy5kZXYiLCJqdGkiOiI5ZjAxM2Q4OWE2ZmE0OGY0N2I0NiIsIm5hbWUiOm51bGwsIm5iZiI6MTY4NTM5MDI5NSwic3ViIjoidXNlcl8yUTh1Y0U5Rjd2S2ZwR3NIQW5xUURhQ3JPcFciLCJzdXJuYW1lIjpudWxsfQ.M1Ky67KsH6Gp67PlehTx2lFdXR9rzLRqd1hYRmaqRsbRWDCaBfyHlRtw1DOMTLPHEPvo2rmLxlEfhsiTkmPcgE1KWB5rO9z5Qv7v2IiNkHBYzid2pLAyyVCWAgfXnC0e-GwVy5vaE9D0g8hlgVDLVGCxLbk36ThvG5k87zgYnEMl9CNgmz4tW0XUWzkT59dsXKCzJ-HYV1m3-m3LurZJd4lOHuVUmREiitLLxzLqpaHmr1ZOYe9H5Dh3x5-ttsK9k8APAe-F3Vf99hyZYLpqL6D9qTz32a8r8pZIROegQCAhQcAMnl_8AzXjOTpvJFpU11iJZvNYSSanULJEuInxpQ",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "90712845-ab78-4692-81dc-8df028966f71",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "ae872e9d-ac0d-4ce4-b95e-7e33f6c270f8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "95012ede-22e1-4dc6-8386-b859a4f621d7",
+			"key": "baseUrl",
+			"value": "http://localhost:5117/api",
+			"type": "string"
+		}
+	]
+}

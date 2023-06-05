@@ -17,6 +17,7 @@ jobs:
       - name: Login to Postman CLI
         run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
       - name: Run the API and Postman tests
+        working-directory: ./src/Workr.Api
         run: |
           dotnet run &
           sleep 60

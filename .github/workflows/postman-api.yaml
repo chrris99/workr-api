@@ -11,16 +11,15 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 7.0.x
-      - name: Run Web API
-        working-directory: ./src/Workr.Api
-        run: dotnet run
       - name: Install Postman CLI
         run: |
           curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
       - name: Login to Postman CLI
         run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
-      - name: Run API tests
+      - name: Run the API and Postman tests
         run: |
+          dotnet run &
+          sleep 60
           postman collection run "${{ github.workspace }}/postman/collections/Workr API Collection.json" --integration-id "140269-${{ github.run_id }}"
           # Lint your API using Postman CLI
           postman api lint 71a7a171-b22b-480a-abbf-e40be11c8f1a --integration-id 140269

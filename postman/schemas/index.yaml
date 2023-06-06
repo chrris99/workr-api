@@ -1,381 +1,659 @@
-openapi: '3.1.0'
-info:
-  version: '1.0.0'
-  title: 'Workr API'
-  description: Create and track workouts
-
-paths:
-  /exercise:
-    get:
-      tags:
-        - exercises
-      summary: Get all available exercises
-      operationId: getExercise
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Exercise'
-    post:
-      tags:
-        - exercises
-      summary: Create a new exercise
-      operationId: createExercise
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Exercise'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Exercise'
-        '400':
-          description: Bad request 
-  /exercise/{exerciseId}:
-    parameters:
-      - name: exerciseId
-        description: The unique identifier of the exercise
-        in: path
-        required: true
-        schema:
-          $ref: '#/components/schemas/ExerciseId'
-    get:
-      tags:
-        - exercises
-      summary: Get exercise by id
-      operationId: getExerciseById
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Exercise'
-        '403':
-          description: Forbidden
-        '404':
-          description: Exercise not found
-    put:
-      tags:
-        - exercises
-      summary: Update an exercise
-      operationId: updateExercise
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Exercise'
-        '403':
-          description: Forbidden
-        '404':
-          description: Exercise not found
-    delete:
-      tags:
-        - exercises
-      summary: Delete exercise
-      operationId: deleteExercise
-      responses:
-        '204':
-          description: No content
-        '403':
-          description: Forbidden
-  /gym:
-    post:
-      tags:
-        - gym
-      summary: Create a gym
-      operationId: createGym
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Gym'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Gym'
-        '400':
-          description: Bad request
-  /gym/{gymId}:
-    parameters:
-      - name: gymId
-        description: The unique identifier of the gym
-        in: path
-        required: true
-        schema:
-          $ref: '#/components/schemas/GymId'
-    get:
-      tags:
-        - gym
-      summary: Get gym details
-      operationId: getGymById
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Gym'
-        '404':
-          description: Gym not found
-    put:
-      tags:
-        - gym
-      summary: Update gym details
-      operationId: updateGymById
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Gym'
-        '400':
-          description: Bad request
-        '404':
-          description: Gym not found
-    delete:
-      tags:
-        - gym
-      summary: Delete gym
-      operationId: deleteGymById
-      responses:
-        '204':
-          description: No content
-  /gym/{gymId}/members:
-    parameters:
-      - name: gymId
-        description: The unique identifier of the gym
-        in: path
-        required: true
-        schema:
-          $ref: '#/components/schemas/GymId'
-    get:
-      tags:
-        - gym
-      summary: Get gym members
-      operationId: getGymMembers
-      responses:
-        '200':
-          description: OK
-  /gym/{gymId}/members/{memberId}:
-    parameters:
-      - name: gymId
-        description: The unique identifier of the gym
-        in: path
-        required: true
-        schema:
-          $ref: '#/components/schemas/GymId'
-      - name: memberId
-        description: The unique identifier of the user
-        in: path
-        required: true
-        schema:
-          $ref: '#/components/schemas/UserId'
-    get:
-      tags:
-        - gym
-      summary: Get gym member details
-      operationId: getGymMemberById
-      responses:
-        '200':
-          description: OK
-    put:
-      tags:
-        - gym
-      summary: Add user to gym
-      operationId: addUserToGym
-      responses:
-        '200':
-          description: OK
-    delete:
-      tags:
-        - gym
-      summary: Remove user from gym
-      operationId: removeGymMember
-      responses:
-        '204':
-          description: No content
-  /workout:
-    get:
-      tags:
-        - workout
-      summary: Get past workouts
-      parameters:
-        - name: offset
-          description: Offset value 
-          in: query
-          schema:
-            type: number
-        - name: limit
-          description: Number of workouts to query
-          in: query
-          schema:
-            type: number
-        - name: status
-          description: Status of the workouts
-          in: query
-          schema:
-            type: string
-      responses:
-        '200':
-          description: OK
-    post:
-      tags:
-        - workout
-      summary: Create a new workout
-      operationId: createWorkout
-      responses:
-        '200':
-          description: OK
-  /workout/{workoutId}:
-    parameters:
-      - name: workoutId
-        description: The unique identifer of a workout
-        in: path
-        required: true
-        schema:
-          $ref: '#/components/schemas/WorkoutId'
-    get:
-      tags:
-        - workout
-      summary: Get workout by id
-      operationId: getWorkoutById
-      responses:
-        '200':
-          description: OK
-    put:
-      tags:
-        - workout
-      summary: Update workout
-      operationId: updateWorkout
-      responses:
-        '200':
-          description: OK
-    delete:
-      tags:
-        - workout
-      summary: Delete workout
-      operationId: deleteWorkout
-      responses:
-        '204':
-          description: No content
-  /user:
-    post:
-      tags:
-        - users
-      summary: Create a new user
-      operationId: createUser
-      responses:
-        '200': 
-          description: OK
-        '400':
-          description: Bad request
-  /user/{userId}:
-    parameters:
-      - name: userId
-        description: The unique identifer of a User
-        in: path
-        required: true
-        schema:
-          $ref: '#/components/schemas/UserId'
-    get:
-      tags:
-        - users
-      summary: Get user details
-      operationId: getUserById
-      responses:
-        '200':
-          description: OK
-        '404':
-          description: Not found
-    put:
-      tags:
-        - users
-      summary: Update user
-      operationId: updateUser
-      responses:
-        '200':
-          description: OK
-        '404':
-          description: Not found
-    delete:
-      tags:
-        - users
-      summary: Delete user
-      operationId: deleteUser
-      responses:
-        '204':
-          description: No content
-    
-components:
-  schemas:
-    UserId:
-      description: The unique identifier of a user
-      type: string
-    ExerciseId:
-      description: The unique identifier of an exercise
-      type: string
-    GymId:
-      description: The unique identifier of a gym
-      type: string
-    WorkoutId:
-      description: The unique identifier of a workout
-      type: string
-    Muscle:
-      description: Muscles and muscle groups
-      type: string
-      enum:
-        - biceps
-        - triceps
-    Difficulty:
-      description: Difficulty of an exercise or workout
-      type: string
-      enum:
-        - beginner
-        - intermediate
-        - advanced
-    Price:
-      description: Represents a price with quantity and currency
-      type: object
-      properties:
-        quantity:
-          type: number
-        currency:
-          type: string
-    Exercise:
-      type: object
-      required:
-        - name
-        - type
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        instructions:
-          type: array
-          items: string
-        createdBy:
-          $ref: '#/components/schemas/UserId'
-        targetMuscleGroups:
-          type: array
-          items:
-            $ref: '#/components/schemas/Muscle'
-        level:
-          $ref: '#/components/schemas/Difficulty'
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Workr API",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5117"
+    }
+  ],
+  "paths": {
+    "/api/template/{id}": {
+      "get": {
+        "tags": [
+          "Template"
+        ],
+        "operationId": "GetWorkoutTemplateByIdEndpoint",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkoutTemplateResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "JWTBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/template": {
+      "post": {
+        "tags": [
+          "Template"
+        ],
+        "summary": "Create a new workout template",
+        "description": "Create a new workout template",
+        "operationId": "CreateWorkoutTemplateEndpoint",
+        "requestBody": {
+          "x-name": "CreateWorkoutTemplateRequest",
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateWorkoutTemplateRequest"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkoutTemplateResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Forbidden"
+          },
+          "403": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "JWTBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/exercise/{id}": {
+      "put": {
+        "tags": [
+          "Exercise"
+        ],
+        "operationId": "UpdateExerciseEndpoint",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          }
+        ],
+        "requestBody": {
+          "x-name": "UpdateExerciseRequest",
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateExerciseRequest"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExerciseResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "JWTBearerAuth": []
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "Exercise"
+        ],
+        "operationId": "GetExerciseByIdEndpoint",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExerciseResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "JWTBearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Exercise"
+        ],
+        "operationId": "DeleteExerciseEndpoint",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {}
+              },
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "JWTBearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/exercise": {
+      "get": {
+        "tags": [
+          "Exercise"
+        ],
+        "operationId": "GetExercisesEndpoint",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ExerciseResponse"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "JWTBearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Exercise"
+        ],
+        "summary": "Create a new exercise",
+        "description": "Create a new exercise",
+        "operationId": "CreateExerciseEndpoint",
+        "requestBody": {
+          "x-name": "CreateExerciseRequest",
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateExerciseRequest"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExerciseResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Forbidden"
+          },
+          "403": {
+            "description": "Unauthorized"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "JWTBearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "WorkoutTemplateResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "blockTemplates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkoutBlockTemplateResponse"
+            }
+          }
+        }
+      },
+      "WorkoutBlockTemplateResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "order": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "itemTemplates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkoutItemTemplateResponse"
+            }
+          }
+        }
+      },
+      "WorkoutItemTemplateResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "exercise": {
+            "$ref": "#/components/schemas/ExerciseResponse"
+          },
+          "sets": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reps": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "order": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "comment": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ExerciseResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "targetMuscleGroup": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "forceType": {
+            "type": "string",
+            "nullable": true
+          },
+          "instructions": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "secondaryMuscleGroups": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "CreateWorkoutTemplateRequest": {
+        "type": "object",
+        "example": {
+          "name": "Push Workout",
+          "description": "Workout mostly focusing on training the chest, triceps and shoulders",
+          "blockTemplateRequests": [
+            {
+              "order": 1,
+              "itemTemplateRequests": [
+                {
+                  "exerciseId": "7f20b718-b43b-450e-812c-050fd85cb6f7",
+                  "sets": 3,
+                  "reps": 12,
+                  "order": 1,
+                  "comment": null
+                },
+                {
+                  "exerciseId": "4b03711f-9eef-475f-87df-60f75e8bccba",
+                  "sets": 3,
+                  "reps": 12,
+                  "order": 2,
+                  "comment": null
+                }
+              ]
+            },
+            {
+              "order": 2,
+              "itemTemplateRequests": [
+                {
+                  "exerciseId": "94aa32f2-0daa-432b-80ef-520cd359997a",
+                  "sets": 3,
+                  "reps": 8,
+                  "order": 1,
+                  "comment": null
+                }
+              ]
+            }
+          ]
+        },
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "blockTemplateRequests": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateWorkoutBlockTemplateRequest"
+            }
+          }
+        }
+      },
+      "CreateWorkoutBlockTemplateRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "order": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "itemTemplateRequests": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateWorkoutItemTemplateRequest"
+            }
+          }
+        }
+      },
+      "CreateWorkoutItemTemplateRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "exerciseId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "sets": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reps": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "order": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "comment": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "UpdateExerciseRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "targetMuscleGroup": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "forceType": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "instructions": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "secondaryMuscleGroups": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "description": "the dto used to send an error response to the client",
+        "additionalProperties": false,
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "description": "the http status code sent to the client. default is 400.",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string",
+            "description": "the message for the error response"
+          },
+          "errors": {
+            "type": "object",
+            "description": "the collection of errors for the current context",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "CreateExerciseRequest": {
+        "type": "object",
+        "example": {
+          "name": "Barbell Bench Press",
+          "targetMuscleGroup": "Chest",
+          "description": "The barbell bench press is a classic exercise popular among all weight lifting circles.",
+          "forceType": "Push (Bilateral)",
+          "type": "Repeated",
+          "instructions": [
+            "Lie flat on a bench and set your hands just outside of shoulder width.",
+            "Set your shoulder blades by pinching them together and driving them into the bench.",
+            "Take a deep breath and allow your spotter to help you with the lift off in order to maintain tightness through your upper back.",
+            "Let the weight settle and ensure your upper back remains tight after lift off.",
+            "Inhale and allow the bar to descend slowly by unlocking the elbows.",
+            "Lower the bar in a straight line to the base of the sternum (breastbone) and touch the chest.",
+            "Push the bar back up in a straight line by pressing yourself into the bench, driving your feet into the floor for leg drive, and extending the elbows.",
+            "Repeat for the desired number of repetitions."
+          ],
+          "secondaryMuscleGroups": [
+            "Shoulders",
+            "Triceps"
+          ]
+        },
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "targetMuscleGroup"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "nullable": false
+          },
+          "targetMuscleGroup": {
+            "type": "string",
+            "minLength": 1,
+            "nullable": false
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "forceType": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "instructions": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "secondaryMuscleGroups": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "JWTBearerAuth": {
+        "type": "http",
+        "description": "Enter a JWT token to authorize the requests...",
+        "scheme": "Bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

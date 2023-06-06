@@ -53,6 +53,7 @@ public sealed class CreateWorkoutTemplateMapper
                             exercise.Id.ToString(),
                             exercise.Name,
                             exercise.TargetMuscleGroup,
+                            exercise.Type,
                             exercise.Description,
                             exercise.ForceType,
                             exercise.Instructions,

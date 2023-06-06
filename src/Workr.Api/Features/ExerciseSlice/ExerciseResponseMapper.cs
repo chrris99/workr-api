@@ -9,6 +9,7 @@ public sealed class ExerciseResponseMapper : ResponseMapper<ExerciseResponse, Ex
         e.Id.ToString(),
         e.Name,
         e.TargetMuscleGroup,
+        e.Type,
         e.Description,
         e.ForceType,
         e.Instructions,

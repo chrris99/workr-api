@@ -16,6 +16,7 @@ public sealed class CreateWorkoutTemplateEndpoint
     {
         Post("api/template");
         Claims("id");
+        Summary(new CreateWorkoutTemplateSummary());
         PreProcessors(new RequestLogger<CreateWorkoutTemplateRequest>());
     }
 

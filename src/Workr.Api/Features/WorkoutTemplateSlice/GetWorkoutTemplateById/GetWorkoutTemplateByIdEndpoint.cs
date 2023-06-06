@@ -1,11 +1,12 @@
 using FastEndpoints;
 using Workr.Application.Repositories;
+using Workr.Domain.Errors;
 using Workr.Web.Processors;
 
 namespace Workr.Web.Features.WorkoutTemplateSlice.GetWorkoutTemplateById;
 
 public class GetWorkoutTemplateByIdEndpoint 
-    : EndpointWithoutRequest<WorkoutTemplateResponse>
+    : EndpointWithoutRequest<WorkoutTemplateResponse, WorkoutTemplateResponseMapper>
 {
     private readonly IWorkoutTemplateRepository _repo;
 
@@ -18,8 +19,22 @@ public class GetWorkoutTemplateByIdEndpoint
         PreProcessors(new RequestLogger<EmptyRequest>());
     }
 
-    public override Task HandleAsync(CancellationToken ct)
+    public override async Task HandleAsync(CancellationToken ct)
     {
-        return base.HandleAsync(ct);
+        var workoutTemplateId = Route<Guid>("id");
+
+        var result = await _repo.GetWorkoutTemplateById(workoutTemplateId);
+        
+        if (result.IsFailure)
+        {
+            if (result.Error.Code == DomainErrors.WorkoutTemplate.NotFoundById.Code)
+                await SendNotFoundAsync();
+            
+            AddError(result.Error.Message, result.Error.Code);
+        }
+        
+        ThrowIfAnyErrors();
+
+        await SendAsync(Map.FromEntity(result.Value));
     }
 }

@@ -8,7 +8,7 @@ public sealed class CreateWorkoutTemplateRequest
     public string? Description { get; set; }
     public List<CreateWorkoutBlockTemplateRequest> BlockTemplateRequests { get; set; }
     
-    [FromClaim]
+    [FromClaim("id")]
     public string UserId { get; set; }
 }
 

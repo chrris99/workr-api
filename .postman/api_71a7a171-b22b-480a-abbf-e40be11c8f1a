@@ -9,7 +9,7 @@ id = 71a7a171-b22b-480a-abbf-e40be11c8f1a
 
 [config.relations.collections]
 rootDirectory = postman/collections
-files[] = {"id":"13663443-4b3003b1-02da-4f8d-9563-23f32936c6e0","path":"Workr API Documentation.json","metaData":{"generateCollectionPreferences":"{\"requestNameSource\":\"Fallback\",\"indentCharacter\":\"Space\",\"parametersResolution\":\"Schema\",\"folderStrategy\":\"Paths\",\"includeAuthInfoInExample\":true,\"enableOptionalParameters\":true,\"keepImplicitHeaders\":false,\"includeDeprecated\":true,\"updateCollectionSync\":true,\"requestParametersResolution\":\"Schema\",\"exampleParametersResolution\":\"Schema\"}"}}
+files[] = {"id":"13663443-4b3003b1-02da-4f8d-9563-23f32936c6e0","path":"Workr API Collection.json","metaData":{}}
 
 [config.relations.collections.metaData]
 

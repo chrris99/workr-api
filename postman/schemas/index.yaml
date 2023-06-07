@@ -50,6 +50,47 @@
             "JWTBearerAuth": []
           }
         ]
+      },
+      "delete": {
+        "tags": [
+          "Template"
+        ],
+        "operationId": "DeleteWorkoutTemplateEndpoint",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {}
+              },
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "security": [
+          {
+            "JWTBearerAuth": []
+          }
+        ]
       }
     },
     "/api/template": {
@@ -393,6 +434,9 @@
           "targetMuscleGroup": {
             "type": "string"
           },
+          "type": {
+            "type": "string"
+          },
           "description": {
             "type": "string",
             "nullable": true
@@ -416,6 +460,10 @@
             }
           }
         }
+      },
+      "DeleteWorkoutTemplateRequest": {
+        "type": "object",
+        "additionalProperties": false
       },
       "CreateWorkoutTemplateRequest": {
         "type": "object",

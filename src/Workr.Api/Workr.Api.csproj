@@ -22,9 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\WorkoutPlanSlice" />
-    <Folder Include="Features\WorkoutSlice" />
-    <Folder Include="Features\WorkoutTemplateSlice\GetWorkoutTemplates" />
+    <Folder Include="Features\WorkoutSlice\UpdateWorkout" />
   </ItemGroup>
 
   <ItemGroup>

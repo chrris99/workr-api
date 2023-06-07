@@ -18,10 +18,13 @@ public sealed class UpdateExerciseMapper : Mapper<UpdateExerciseRequest, Exercis
         SecondaryMuscleGroups = r.SecondaryMuscleGroups
     };
 
-    public override ExerciseResponse FromEntity(Domain.Exercise.Exercise e)
-    {
-        return base.FromEntity(e);
-    }
-
-
+    public override ExerciseResponse FromEntity(Exercise e) => new(
+        e.Id.ToString(),
+        e.Name,
+        e.TargetMuscleGroup,
+        e.Type,
+        e.Description,
+        e.ForceType,
+        e.Instructions,
+        e.SecondaryMuscleGroups);
 }

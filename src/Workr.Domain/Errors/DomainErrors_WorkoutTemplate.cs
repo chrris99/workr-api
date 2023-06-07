@@ -10,5 +10,8 @@ public static partial class DomainErrors
     {
         public static Error NotFoundById =>
             new($"{WorkoutTemplateBase}.NotFoundById", "Workout template with given ID not found in database");
+
+        public static Error Forbidden =>
+            new($"{WorkoutTemplateBase}.Forbidden", "Forbidden");
     }
 }

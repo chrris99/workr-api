@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "4b3003b1-02da-4f8d-9563-23f32936c6e0",
+		"_postman_id": "8bd4495a-ad77-4b1c-9548-5deaa1ad8c53",
 		"name": "Workr API Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_uid": "13663443-4b3003b1-02da-4f8d-9563-23f32936c6e0"
+		"_uid": "13663443-8bd4495a-ad77-4b1c-9548-5deaa1ad8c53"
 	},
 	"item": [
 		{
@@ -16,8 +16,227 @@
 							"name": "{id}",
 							"item": [
 								{
+									"name": "Update Workout Template Endpoint",
+									"id": "380e904b-b606-4fa6-9461-262dba020223",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{bearerToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"blockTemplateRequests\": [\n    {\n      \"order\": \"<integer>\",\n      \"itemTemplateRequests\": [\n        {\n          \"exerciseId\": \"<guid>\",\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        },\n        {\n          \"exerciseId\": \"<guid>\",\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"order\": \"<integer>\",\n      \"itemTemplateRequests\": [\n        {\n          \"exerciseId\": \"<guid>\",\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        },\n        {\n          \"exerciseId\": \"<guid>\",\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/template/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"template",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"id": "a47b06ce-08b2-4385-8428-b30ce4191932",
+											"name": "Success",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"blockTemplateRequests\": [\n    {\n      \"order\": \"<integer>\",\n      \"itemTemplateRequests\": [\n        {\n          \"exerciseId\": \"<guid>\",\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        },\n        {\n          \"exerciseId\": \"<guid>\",\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"order\": \"<integer>\",\n      \"itemTemplateRequests\": [\n        {\n          \"exerciseId\": \"<guid>\",\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        },\n        {\n          \"exerciseId\": \"<guid>\",\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/template/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"template",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<guid>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"blockTemplates\": [\n    {\n      \"order\": \"<integer>\",\n      \"itemTemplates\": [\n        {\n          \"exercise\": {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"targetMuscleGroup\": \"<string>\",\n            \"type\": \"<string>\",\n            \"description\": \"<string>\",\n            \"forceType\": \"<string>\",\n            \"instructions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"secondaryMuscleGroups\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        },\n        {\n          \"exercise\": {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"targetMuscleGroup\": \"<string>\",\n            \"type\": \"<string>\",\n            \"description\": \"<string>\",\n            \"forceType\": \"<string>\",\n            \"instructions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"secondaryMuscleGroups\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"order\": \"<integer>\",\n      \"itemTemplates\": [\n        {\n          \"exercise\": {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"targetMuscleGroup\": \"<string>\",\n            \"type\": \"<string>\",\n            \"description\": \"<string>\",\n            \"forceType\": \"<string>\",\n            \"instructions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"secondaryMuscleGroups\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        },\n        {\n          \"exercise\": {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"targetMuscleGroup\": \"<string>\",\n            \"type\": \"<string>\",\n            \"description\": \"<string>\",\n            \"forceType\": \"<string>\",\n            \"instructions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"secondaryMuscleGroups\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}"
+										},
+										{
+											"id": "ed1f3a36-c531-4a83-8980-24057e54df50",
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"blockTemplateRequests\": [\n    {\n      \"order\": \"<integer>\",\n      \"itemTemplateRequests\": [\n        {\n          \"exerciseId\": \"<guid>\",\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        },\n        {\n          \"exerciseId\": \"<guid>\",\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"order\": \"<integer>\",\n      \"itemTemplateRequests\": [\n        {\n          \"exerciseId\": \"<guid>\",\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        },\n        {\n          \"exerciseId\": \"<guid>\",\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/template/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"template",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"id": "11417e93-a2da-4cb4-8a63-0b606214620d",
+											"name": "Forbidden",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"blockTemplateRequests\": [\n    {\n      \"order\": \"<integer>\",\n      \"itemTemplateRequests\": [\n        {\n          \"exerciseId\": \"<guid>\",\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        },\n        {\n          \"exerciseId\": \"<guid>\",\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"order\": \"<integer>\",\n      \"itemTemplateRequests\": [\n        {\n          \"exerciseId\": \"<guid>\",\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        },\n        {\n          \"exerciseId\": \"<guid>\",\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/template/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"template",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
 									"name": "Get Workout Template By Id Endpoint",
-									"id": "21d64916-3a60-4dab-8c54-9b0a28829771",
+									"id": "6905db78-bb07-49e8-9b9c-9c92575c5959",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -60,21 +279,11 @@
 									},
 									"response": [
 										{
-											"id": "5ed9ef1d-60d0-4c18-bc99-7f83449d5437",
+											"id": "6bc2df99-7059-4e7a-8ce9-f05d00c01d0e",
 											"name": "Success",
 											"originalRequest": {
 												"method": "GET",
-												"header": [
-													{
-														"description": "Added as a part of security scheme: bearer",
-														"key": "Authorization",
-														"value": "Bearer <token>"
-													},
-													{
-														"key": "Accept",
-														"value": "application/json"
-													}
-												],
+												"header": [],
 												"url": {
 													"raw": "{{baseUrl}}/api/template/:id",
 													"host": [
@@ -88,26 +297,64 @@
 													"variable": [
 														{
 															"key": "id",
-															"value": "<string>",
-															"description": "(Required) "
+															"value": "7caf44dd-0a61-40e1-953e-96da416f692e",
+															"description": "Workout template id"
 														}
 													]
 												}
 											},
 											"status": "OK",
 											"code": 200,
-											"_postman_previewlanguage": "Text",
+											"_postman_previewlanguage": "json",
 											"header": [
 												{
 													"key": "Content-Type",
 													"value": "application/json"
+												},
+												{
+													"key": "Date",
+													"value": "Wed, 07 Jun 2023 19:35:58 GMT"
+												},
+												{
+													"key": "Server",
+													"value": "Kestrel"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"id\": \"<guid>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"blockTemplates\": [\n    {\n      \"order\": \"<integer>\",\n      \"itemTemplates\": [\n        {\n          \"exercise\": {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"targetMuscleGroup\": \"<string>\",\n            \"description\": \"<string>\",\n            \"forceType\": \"<string>\",\n            \"instructions\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"secondaryMuscleGroups\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        },\n        {\n          \"exercise\": {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"targetMuscleGroup\": \"<string>\",\n            \"description\": \"<string>\",\n            \"forceType\": \"<string>\",\n            \"instructions\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"secondaryMuscleGroups\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"order\": \"<integer>\",\n      \"itemTemplates\": [\n        {\n          \"exercise\": {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"targetMuscleGroup\": \"<string>\",\n            \"description\": \"<string>\",\n            \"forceType\": \"<string>\",\n            \"instructions\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"secondaryMuscleGroups\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        },\n        {\n          \"exercise\": {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"targetMuscleGroup\": \"<string>\",\n            \"description\": \"<string>\",\n            \"forceType\": \"<string>\",\n            \"instructions\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"secondaryMuscleGroups\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}"
+											"body": "{\n    \"id\": \"7caf44dd-0a61-40e1-953e-96da416f692e\",\n    \"name\": \"Test Workout Template\",\n    \"description\": \"The Test Workout Template is good for training the chest and the biceps.\",\n    \"blockTemplates\": [\n        {\n            \"order\": 1,\n            \"itemTemplates\": [\n                {\n                    \"exercise\": {\n                        \"id\": \"9987fab0-4dc7-414e-ae73-0471fc980a49\",\n                        \"name\": \"Wide-grip Barbell Curl\",\n                        \"targetMuscleGroup\": \"Biceps\",\n                        \"type\": \"Repeated\",\n                        \"description\": \"Variation of the classic barbell curl with the grip wider than shoulder width. It helps build the inner or short head of the biceps muscles.\",\n                        \"forceType\": \"Pull\",\n                        \"instructions\": [\n                            \"Stand up with your torso upright while holding a barbell at the wide outer handle. The palm of your hands should be facing forward. The elbows should be close to the torso.\",\n                            \"While holding the upper arms stationary, curl the weights forward while contracting the biceps as you breathe out. Only the forearms should move.\",\n                            \"Continue the movement until your biceps are fully contracted and the bar is at shoulder level. Hold the contracted position for a second and squeeye the biceps hard.\",\n                            \"Slowly begin to bring the bar back to starting position as you breathe in.\"\n                        ],\n                        \"secondaryMuscleGroups\": null\n                    },\n                    \"sets\": 4,\n                    \"reps\": 8,\n                    \"order\": 1,\n                    \"comment\": \"Be careful with the bicep curls!\"\n                },\n                {\n                    \"exercise\": {\n                        \"id\": \"e235a108-b5ad-4c0a-b8e6-3f06218162c4\",\n                        \"name\": \"Barbell Bench Press\",\n                        \"targetMuscleGroup\": \"Chest\",\n                        \"type\": \"Repeated\",\n                        \"description\": \"The barbell bench press is a classic exercise popular among all weight lifting circles.\",\n                        \"forceType\": \"Push (Bilateral)\",\n                        \"instructions\": [\n                            \"Lie flat on a bench and set your hands just outside of shoulder width.\",\n                            \"Set your shoulder blades by pinching them together and driving them into the bench.\",\n                            \"Take a deep breath and allow your spotter to help you with the lift off in order to maintain tightness through your upper back.\",\n                            \"Let the weight settle and ensure your upper back remains tight after lift off.\",\n                            \"Inhale and allow the bar to descend slowly by unlocking the elbows.\",\n                            \"Lower the bar in a straight line to the base of the sternum (breastbone) and touch the chest.\",\n                            \"Push the bar back up in a straight line by pressing yourself into the bench, driving your feet into the floor for leg drive, and extending the elbows.\",\n                            \"Repeat for the desired number of repetitions.\"\n                        ],\n                        \"secondaryMuscleGroups\": [\n                            \"Shoulders\",\n                            \"Triceps\"\n                        ]\n                    },\n                    \"sets\": 5,\n                    \"reps\": 8,\n                    \"order\": 2,\n                    \"comment\": null\n                }\n            ]\n        }\n    ]\n}"
 										},
 										{
-											"id": "3deb2215-50bb-4346-9fa5-0506f022f6a7",
+											"id": "b33449fb-d9d5-4004-b11e-13d75b08ca9e",
+											"name": "Not Found",
+											"originalRequest": {
+												"method": "GET",
+												"header": []
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "plain",
+											"header": [
+												{
+													"key": "Date",
+													"value": "Wed, 07 Jun 2023 19:38:26 GMT"
+												},
+												{
+													"key": "Server",
+													"value": "Kestrel"
+												},
+												{
+													"key": "Transfer-Encoding",
+													"value": "chunked"
+												}
+											],
+											"cookie": []
+										},
+										{
+											"id": "ccd174a8-fd81-4161-8a63-401d2c1058dc",
 											"name": "Unauthorized",
 											"originalRequest": {
 												"method": "GET",
@@ -150,7 +397,7 @@
 											"body": ""
 										},
 										{
-											"id": "a4480189-4163-4bdb-bfb1-38a28c7f5e76",
+											"id": "327a9ab4-12cf-447e-a054-ef4aa4566c83",
 											"name": "Forbidden",
 											"originalRequest": {
 												"method": "GET",
@@ -191,16 +438,72 @@
 											],
 											"cookie": [],
 											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Delete Workout Template Endpoint",
+									"id": "9cf12069-a10e-43da-ad0e-bca612fd8e94",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{bearerToken}}",
+													"type": "string"
+												}
+											]
 										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/template/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"template",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "7caf44dd-0a61-40e1-953e-96da416f692e",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
 										{
-											"id": "847d77dc-6a84-4018-9975-c891b0016b7c",
-											"name": "Get Workout Template By Id Endpoint",
+											"id": "fa9d544b-49ec-4632-9522-b5570c712303",
+											"name": "Success",
 											"originalRequest": {
-												"method": "GET",
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{bearerToken}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "DELETE",
 												"header": [
 													{
 														"key": "Accept",
-														"value": "application/json"
+														"value": "text/plain"
 													}
 												],
 												"url": {
@@ -216,44 +519,279 @@
 													"variable": [
 														{
 															"key": "id",
-															"value": "7caf44dd-0a61-40e1-953e-96da416f692e",
+															"value": "<guid>",
 															"description": "(Required) "
 														}
 													]
 												}
 											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "json",
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "plain",
 											"header": [
 												{
-													"key": "Content-Type",
-													"value": "application/json"
-												},
-												{
 													"key": "Date",
-													"value": "Tue, 06 Jun 2023 19:56:20 GMT"
+													"value": "Wed, 07 Jun 2023 19:36:31 GMT"
 												},
 												{
 													"key": "Server",
 													"value": "Kestrel"
-												},
+												}
+											],
+											"cookie": []
+										},
+										{
+											"id": "eece0098-9100-446b-8159-f22344c54810",
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/template/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"template",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<guid>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "text",
+											"header": [
 												{
-													"key": "Transfer-Encoding",
-													"value": "chunked"
+													"key": "Content-Type",
+													"value": "text/plain"
 												}
 											],
 											"cookie": [],
-											"body": "{\n    \"id\": \"7caf44dd-0a61-40e1-953e-96da416f692e\",\n    \"name\": \"Test Workout Template\",\n    \"description\": \"The Test Workout Template is good for training the chest and the biceps.\",\n    \"blockTemplates\": [\n        {\n            \"order\": 1,\n            \"itemTemplates\": [\n                {\n                    \"exercise\": {\n                        \"id\": \"9987fab0-4dc7-414e-ae73-0471fc980a49\",\n                        \"name\": \"Wide-grip Barbell Curl\",\n                        \"targetMuscleGroup\": \"Biceps\",\n                        \"type\": \"Repeated\",\n                        \"description\": \"Variation of the classic barbell curl with the grip wider than shoulder width. It helps build the inner or short head of the biceps muscles.\",\n                        \"forceType\": \"Pull\",\n                        \"instructions\": [\n                            \"Stand up with your torso upright while holding a barbell at the wide outer handle. The palm of your hands should be facing forward. The elbows should be close to the torso.\",\n                            \"While holding the upper arms stationary, curl the weights forward while contracting the biceps as you breathe out. Only the forearms should move.\",\n                            \"Continue the movement until your biceps are fully contracted and the bar is at shoulder level. Hold the contracted position for a second and squeeye the biceps hard.\",\n                            \"Slowly begin to bring the bar back to starting position as you breathe in.\"\n                        ],\n                        \"secondaryMuscleGroups\": null\n                    },\n                    \"sets\": 4,\n                    \"reps\": 8,\n                    \"order\": 1,\n                    \"comment\": \"Be careful with the bicep curls!\"\n                },\n                {\n                    \"exercise\": {\n                        \"id\": \"e235a108-b5ad-4c0a-b8e6-3f06218162c4\",\n                        \"name\": \"Barbell Bench Press\",\n                        \"targetMuscleGroup\": \"Chest\",\n                        \"type\": \"Repeated\",\n                        \"description\": \"The barbell bench press is a classic exercise popular among all weight lifting circles.\",\n                        \"forceType\": \"Push (Bilateral)\",\n                        \"instructions\": [\n                            \"Lie flat on a bench and set your hands just outside of shoulder width.\",\n                            \"Set your shoulder blades by pinching them together and driving them into the bench.\",\n                            \"Take a deep breath and allow your spotter to help you with the lift off in order to maintain tightness through your upper back.\",\n                            \"Let the weight settle and ensure your upper back remains tight after lift off.\",\n                            \"Inhale and allow the bar to descend slowly by unlocking the elbows.\",\n                            \"Lower the bar in a straight line to the base of the sternum (breastbone) and touch the chest.\",\n                            \"Push the bar back up in a straight line by pressing yourself into the bench, driving your feet into the floor for leg drive, and extending the elbows.\",\n                            \"Repeat for the desired number of repetitions.\"\n                        ],\n                        \"secondaryMuscleGroups\": [\n                            \"Shoulders\",\n                            \"Triceps\"\n                        ]\n                    },\n                    \"sets\": 5,\n                    \"reps\": 8,\n                    \"order\": 2,\n                    \"comment\": null\n                }\n            ]\n        }\n    ]\n}"
+											"body": ""
+										},
+										{
+											"id": "47bc6c14-3749-42a6-b0bf-139e0f572674",
+											"name": "Forbidden",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/template/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"template",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<guid>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
 										}
 									]
 								}
 							],
-							"id": "34a07de6-5980-482e-a532-c134323391eb"
+							"id": "26c2a46e-36a9-413c-8345-44e7e8d014f1"
+						},
+						{
+							"name": "Get Workout Templates Endpoint",
+							"id": "170c45cf-4b49-46ec-8487-f67e33ef4d2d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/template",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"template"
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "36ad191f-1b5e-4ead-b48f-a8e34d6ab568",
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/template",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"template"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"<guid>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"blockTemplates\": [\n      {\n        \"order\": \"<integer>\",\n        \"itemTemplates\": [\n          {\n            \"exercise\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sets\": \"<integer>\",\n            \"reps\": \"<integer>\",\n            \"order\": \"<integer>\",\n            \"comment\": \"<string>\"\n          },\n          {\n            \"exercise\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sets\": \"<integer>\",\n            \"reps\": \"<integer>\",\n            \"order\": \"<integer>\",\n            \"comment\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"order\": \"<integer>\",\n        \"itemTemplates\": [\n          {\n            \"exercise\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sets\": \"<integer>\",\n            \"reps\": \"<integer>\",\n            \"order\": \"<integer>\",\n            \"comment\": \"<string>\"\n          },\n          {\n            \"exercise\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sets\": \"<integer>\",\n            \"reps\": \"<integer>\",\n            \"order\": \"<integer>\",\n            \"comment\": \"<string>\"\n          }\n        ]\n      }\n    ]\n  },\n  {\n    \"id\": \"<guid>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"blockTemplates\": [\n      {\n        \"order\": \"<integer>\",\n        \"itemTemplates\": [\n          {\n            \"exercise\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sets\": \"<integer>\",\n            \"reps\": \"<integer>\",\n            \"order\": \"<integer>\",\n            \"comment\": \"<string>\"\n          },\n          {\n            \"exercise\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sets\": \"<integer>\",\n            \"reps\": \"<integer>\",\n            \"order\": \"<integer>\",\n            \"comment\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"order\": \"<integer>\",\n        \"itemTemplates\": [\n          {\n            \"exercise\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sets\": \"<integer>\",\n            \"reps\": \"<integer>\",\n            \"order\": \"<integer>\",\n            \"comment\": \"<string>\"\n          },\n          {\n            \"exercise\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sets\": \"<integer>\",\n            \"reps\": \"<integer>\",\n            \"order\": \"<integer>\",\n            \"comment\": \"<string>\"\n          }\n        ]\n      }\n    ]\n  }\n]"
+								},
+								{
+									"id": "913583aa-d973-49c3-88bc-c6e043d534fb",
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/template",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"template"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"id": "e856ab8e-be31-4a21-ab0e-0e6ee114f3b7",
+									"name": "Get Workout Templates Endpoint",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/template",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"template"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 07 Jun 2023 19:35:22 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Kestrel"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": \"7caf44dd-0a61-40e1-953e-96da416f692e\",\n        \"name\": \"Test Workout Template\",\n        \"description\": \"The Test Workout Template is good for training the chest and the biceps.\",\n        \"blockTemplates\": [\n            {\n                \"order\": 1,\n                \"itemTemplates\": [\n                    {\n                        \"exercise\": {\n                            \"id\": \"9987fab0-4dc7-414e-ae73-0471fc980a49\",\n                            \"name\": \"Wide-grip Barbell Curl\",\n                            \"targetMuscleGroup\": \"Biceps\",\n                            \"type\": \"Repeated\",\n                            \"description\": \"Variation of the classic barbell curl with the grip wider than shoulder width. It helps build the inner or short head of the biceps muscles.\",\n                            \"forceType\": \"Pull\",\n                            \"instructions\": [\n                                \"Stand up with your torso upright while holding a barbell at the wide outer handle. The palm of your hands should be facing forward. The elbows should be close to the torso.\",\n                                \"While holding the upper arms stationary, curl the weights forward while contracting the biceps as you breathe out. Only the forearms should move.\",\n                                \"Continue the movement until your biceps are fully contracted and the bar is at shoulder level. Hold the contracted position for a second and squeeye the biceps hard.\",\n                                \"Slowly begin to bring the bar back to starting position as you breathe in.\"\n                            ],\n                            \"secondaryMuscleGroups\": null\n                        },\n                        \"sets\": 4,\n                        \"reps\": 8,\n                        \"order\": 1,\n                        \"comment\": \"Be careful with the bicep curls!\"\n                    },\n                    {\n                        \"exercise\": {\n                            \"id\": \"e235a108-b5ad-4c0a-b8e6-3f06218162c4\",\n                            \"name\": \"Barbell Bench Press\",\n                            \"targetMuscleGroup\": \"Chest\",\n                            \"type\": \"Repeated\",\n                            \"description\": \"The barbell bench press is a classic exercise popular among all weight lifting circles.\",\n                            \"forceType\": \"Push (Bilateral)\",\n                            \"instructions\": [\n                                \"Lie flat on a bench and set your hands just outside of shoulder width.\",\n                                \"Set your shoulder blades by pinching them together and driving them into the bench.\",\n                                \"Take a deep breath and allow your spotter to help you with the lift off in order to maintain tightness through your upper back.\",\n                                \"Let the weight settle and ensure your upper back remains tight after lift off.\",\n                                \"Inhale and allow the bar to descend slowly by unlocking the elbows.\",\n                                \"Lower the bar in a straight line to the base of the sternum (breastbone) and touch the chest.\",\n                                \"Push the bar back up in a straight line by pressing yourself into the bench, driving your feet into the floor for leg drive, and extending the elbows.\",\n                                \"Repeat for the desired number of repetitions.\"\n                            ],\n                            \"secondaryMuscleGroups\": [\n                                \"Shoulders\",\n                                \"Triceps\"\n                            ]\n                        },\n                        \"sets\": 5,\n                        \"reps\": 8,\n                        \"order\": 2,\n                        \"comment\": null\n                    }\n                ]\n            }\n        ]\n    }\n]"
+								}
+							]
 						},
 						{
 							"name": "Create a new workout template",
-							"id": "f2e8383a-be9a-4fb6-9a56-e052362a8be9",
+							"id": "37b2d4ba-6502-4f82-b9ea-4c9fe9c3887d",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -281,7 +819,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"name\": \"Test Workout Template\",\n  \"description\": \"The Test Workout Template is good for training the chest and the biceps.\",\n  \"blockTemplateRequests\": [\n    {\n      \"order\": \"1\",\n      \"itemTemplateRequests\": [\n        {\n          \"exerciseId\": \"9987fab0-4dc7-414e-ae73-0471fc980a49\",\n          \"sets\": \"4\",\n          \"reps\": \"8\",\n          \"order\": \"1\",\n          \"comment\": \"Be careful with the bicep curls!\"\n        },\n        {\n          \"exerciseId\": \"e235a108-b5ad-4c0a-b8e6-3f06218162c4\",\n          \"sets\": \"5\",\n          \"reps\": \"8\",\n          \"order\": \"2\"\n        }\n      ]\n    }\n  ]\n}",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"blockTemplateRequests\": [\n    {\n      \"order\": \"<integer>\",\n      \"itemTemplateRequests\": [\n        {\n          \"exerciseId\": \"<guid>\",\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        },\n        {\n          \"exerciseId\": \"<guid>\",\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"order\": \"<integer>\",\n      \"itemTemplateRequests\": [\n        {\n          \"exerciseId\": \"<guid>\",\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        },\n        {\n          \"exerciseId\": \"<guid>\",\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -302,7 +840,7 @@
 							},
 							"response": [
 								{
-									"id": "606cff84-0f48-4d64-b016-37a2beab2487",
+									"id": "406fd4c1-7d02-4c39-b9dd-9872553330cf",
 									"name": "Success",
 									"originalRequest": {
 										"method": "POST",
@@ -339,7 +877,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": "Text",
+									"_postman_previewlanguage": "json",
 									"header": [
 										{
 											"key": "Content-Type",
@@ -347,10 +885,10 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"id\": \"<guid>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"blockTemplates\": [\n    {\n      \"order\": \"<integer>\",\n      \"itemTemplates\": [\n        {\n          \"exercise\": {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"targetMuscleGroup\": \"<string>\",\n            \"description\": \"<string>\",\n            \"forceType\": \"<string>\",\n            \"instructions\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"secondaryMuscleGroups\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        },\n        {\n          \"exercise\": {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"targetMuscleGroup\": \"<string>\",\n            \"description\": \"<string>\",\n            \"forceType\": \"<string>\",\n            \"instructions\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"secondaryMuscleGroups\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"order\": \"<integer>\",\n      \"itemTemplates\": [\n        {\n          \"exercise\": {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"targetMuscleGroup\": \"<string>\",\n            \"description\": \"<string>\",\n            \"forceType\": \"<string>\",\n            \"instructions\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"secondaryMuscleGroups\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        },\n        {\n          \"exercise\": {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"targetMuscleGroup\": \"<string>\",\n            \"description\": \"<string>\",\n            \"forceType\": \"<string>\",\n            \"instructions\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"secondaryMuscleGroups\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}"
+									"body": "{\n  \"id\": \"<guid>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"blockTemplates\": [\n    {\n      \"order\": \"<integer>\",\n      \"itemTemplates\": [\n        {\n          \"exercise\": {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"targetMuscleGroup\": \"<string>\",\n            \"type\": \"<string>\",\n            \"description\": \"<string>\",\n            \"forceType\": \"<string>\",\n            \"instructions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"secondaryMuscleGroups\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        },\n        {\n          \"exercise\": {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"targetMuscleGroup\": \"<string>\",\n            \"type\": \"<string>\",\n            \"description\": \"<string>\",\n            \"forceType\": \"<string>\",\n            \"instructions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"secondaryMuscleGroups\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"order\": \"<integer>\",\n      \"itemTemplates\": [\n        {\n          \"exercise\": {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"targetMuscleGroup\": \"<string>\",\n            \"type\": \"<string>\",\n            \"description\": \"<string>\",\n            \"forceType\": \"<string>\",\n            \"instructions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"secondaryMuscleGroups\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        },\n        {\n          \"exercise\": {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"targetMuscleGroup\": \"<string>\",\n            \"type\": \"<string>\",\n            \"description\": \"<string>\",\n            \"forceType\": \"<string>\",\n            \"instructions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"secondaryMuscleGroups\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}"
 								},
 								{
-									"id": "e8c9f56a-3512-444d-89cc-84e28356d5fe",
+									"id": "c03e467f-d0ab-49ea-962b-e3651065798a",
 									"name": "Forbidden",
 									"originalRequest": {
 										"method": "POST",
@@ -394,7 +932,7 @@
 									"body": ""
 								},
 								{
-									"id": "27a53bdb-3ffe-4ee2-bec2-cd86e72edb39",
+									"id": "b0985592-b3d3-4f72-90b0-47f79a002283",
 									"name": "Unauthorized",
 									"originalRequest": {
 										"method": "POST",
@@ -436,16 +974,585 @@
 									],
 									"cookie": [],
 									"body": ""
+								}
+							]
+						}
+					],
+					"id": "2a1f5213-fbf1-4b10-ab98-f15f82b30391"
+				},
+				{
+					"name": "workout",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "Get Workout By Id Endpoint",
+									"id": "ce23428d-fdff-45d6-813d-d78510f96217",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{bearerToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/workout/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"workout",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<guid>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"id": "a4f53505-baa8-476a-a20f-c993ab2fd396",
+											"name": "Success",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/workout/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"workout",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<guid>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<guid>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"description\": \"<string>\",\n  \"start\": \"<dateTime>\",\n  \"end\": \"<dateTime>\",\n  \"comment\": \"<string>\",\n  \"workoutBlocks\": [\n    {\n      \"order\": \"<integer>\",\n      \"status\": \"<string>\",\n      \"workoutItems\": [\n        {\n          \"sets\": \"<integer>\",\n          \"currentSet\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"weight\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"status\": \"<string>\",\n          \"comment\": \"<string>\",\n          \"exercise\": {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"targetMuscleGroup\": \"<string>\",\n            \"type\": \"<string>\",\n            \"description\": \"<string>\",\n            \"forceType\": \"<string>\",\n            \"instructions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"secondaryMuscleGroups\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        {\n          \"sets\": \"<integer>\",\n          \"currentSet\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"weight\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"status\": \"<string>\",\n          \"comment\": \"<string>\",\n          \"exercise\": {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"targetMuscleGroup\": \"<string>\",\n            \"type\": \"<string>\",\n            \"description\": \"<string>\",\n            \"forceType\": \"<string>\",\n            \"instructions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"secondaryMuscleGroups\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      ]\n    },\n    {\n      \"order\": \"<integer>\",\n      \"status\": \"<string>\",\n      \"workoutItems\": [\n        {\n          \"sets\": \"<integer>\",\n          \"currentSet\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"weight\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"status\": \"<string>\",\n          \"comment\": \"<string>\",\n          \"exercise\": {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"targetMuscleGroup\": \"<string>\",\n            \"type\": \"<string>\",\n            \"description\": \"<string>\",\n            \"forceType\": \"<string>\",\n            \"instructions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"secondaryMuscleGroups\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        {\n          \"sets\": \"<integer>\",\n          \"currentSet\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"weight\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"status\": \"<string>\",\n          \"comment\": \"<string>\",\n          \"exercise\": {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"targetMuscleGroup\": \"<string>\",\n            \"type\": \"<string>\",\n            \"description\": \"<string>\",\n            \"forceType\": \"<string>\",\n            \"instructions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"secondaryMuscleGroups\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      ]\n    }\n  ]\n}"
+										},
+										{
+											"id": "8b5441c0-8d56-4014-8f6f-5b5cd7992440",
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/workout/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"workout",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<guid>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"id": "e3093d9f-84d2-4677-aa22-f0c7c0e814c9",
+											"name": "Forbidden",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/workout/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"workout",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<guid>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
 								},
 								{
-									"id": "2d0b616e-8ad3-4b53-b8b0-db001d3f93af",
-									"name": "Create a new workout template",
+									"name": "Delete Workout Endpoint",
+									"id": "ed1b6383-9606-4092-87cb-e5496fe2a039",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{bearerToken}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/workout/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"workout",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<guid>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"id": "d60f5259-3bae-406f-85e8-fb3c580f1d5b",
+											"name": "Success",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/workout/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"workout",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<guid>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"id": "aa8ea9bf-a9cc-41c3-95f9-32c4cdfcf274",
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/workout/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"workout",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<guid>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"id": "d13b5453-11da-4c53-a113-d098713e7d2e",
+											"name": "Forbidden",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/workout/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"workout",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<guid>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							],
+							"id": "84e63094-98cb-4d03-9e8a-d0b9947e4574"
+						},
+						{
+							"name": "Get Workouts Endpoint",
+							"id": "b9ac0648-f269-4c33-81e8-ee44e91b66ab",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/workout",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"workout"
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "b19d0ea1-99d0-406d-b529-db98e0b5e347",
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/workout",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"workout"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"<guid>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"description\": \"<string>\",\n    \"start\": \"<dateTime>\",\n    \"end\": \"<dateTime>\",\n    \"comment\": \"<string>\",\n    \"workoutBlocks\": [\n      {\n        \"order\": \"<integer>\",\n        \"status\": \"<string>\",\n        \"workoutItems\": [\n          {\n            \"sets\": \"<integer>\",\n            \"currentSet\": \"<integer>\",\n            \"reps\": \"<integer>\",\n            \"weight\": \"<integer>\",\n            \"order\": \"<integer>\",\n            \"status\": \"<string>\",\n            \"comment\": \"<string>\",\n            \"exercise\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"sets\": \"<integer>\",\n            \"currentSet\": \"<integer>\",\n            \"reps\": \"<integer>\",\n            \"weight\": \"<integer>\",\n            \"order\": \"<integer>\",\n            \"status\": \"<string>\",\n            \"comment\": \"<string>\",\n            \"exercise\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      {\n        \"order\": \"<integer>\",\n        \"status\": \"<string>\",\n        \"workoutItems\": [\n          {\n            \"sets\": \"<integer>\",\n            \"currentSet\": \"<integer>\",\n            \"reps\": \"<integer>\",\n            \"weight\": \"<integer>\",\n            \"order\": \"<integer>\",\n            \"status\": \"<string>\",\n            \"comment\": \"<string>\",\n            \"exercise\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"sets\": \"<integer>\",\n            \"currentSet\": \"<integer>\",\n            \"reps\": \"<integer>\",\n            \"weight\": \"<integer>\",\n            \"order\": \"<integer>\",\n            \"status\": \"<string>\",\n            \"comment\": \"<string>\",\n            \"exercise\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    ]\n  },\n  {\n    \"id\": \"<guid>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"description\": \"<string>\",\n    \"start\": \"<dateTime>\",\n    \"end\": \"<dateTime>\",\n    \"comment\": \"<string>\",\n    \"workoutBlocks\": [\n      {\n        \"order\": \"<integer>\",\n        \"status\": \"<string>\",\n        \"workoutItems\": [\n          {\n            \"sets\": \"<integer>\",\n            \"currentSet\": \"<integer>\",\n            \"reps\": \"<integer>\",\n            \"weight\": \"<integer>\",\n            \"order\": \"<integer>\",\n            \"status\": \"<string>\",\n            \"comment\": \"<string>\",\n            \"exercise\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"sets\": \"<integer>\",\n            \"currentSet\": \"<integer>\",\n            \"reps\": \"<integer>\",\n            \"weight\": \"<integer>\",\n            \"order\": \"<integer>\",\n            \"status\": \"<string>\",\n            \"comment\": \"<string>\",\n            \"exercise\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      {\n        \"order\": \"<integer>\",\n        \"status\": \"<string>\",\n        \"workoutItems\": [\n          {\n            \"sets\": \"<integer>\",\n            \"currentSet\": \"<integer>\",\n            \"reps\": \"<integer>\",\n            \"weight\": \"<integer>\",\n            \"order\": \"<integer>\",\n            \"status\": \"<string>\",\n            \"comment\": \"<string>\",\n            \"exercise\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"sets\": \"<integer>\",\n            \"currentSet\": \"<integer>\",\n            \"reps\": \"<integer>\",\n            \"weight\": \"<integer>\",\n            \"order\": \"<integer>\",\n            \"status\": \"<string>\",\n            \"comment\": \"<string>\",\n            \"exercise\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    ]\n  }\n]"
+								},
+								{
+									"id": "95e72e7c-935b-45bc-b5f6-2ceb8ae98992",
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/workout",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"workout"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"id": "e22e2b03-2669-471f-a312-e6b77457d1b5",
+									"name": "Forbidden",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/workout",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"workout"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Create Workout Endpoint",
+							"id": "e43b4ce1-7bb1-47cb-ab84-b005f03ca34a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bearerToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"start\": \"<dateTime>\",\n  \"comment\": \"<string>\",\n  \"workoutBlocks\": [\n    {\n      \"order\": \"<integer>\",\n      \"workoutItems\": [\n        {\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"weight\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\",\n          \"exerciseId\": \"<guid>\"\n        },\n        {\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"weight\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\",\n          \"exerciseId\": \"<guid>\"\n        }\n      ]\n    },\n    {\n      \"order\": \"<integer>\",\n      \"workoutItems\": [\n        {\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"weight\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\",\n          \"exerciseId\": \"<guid>\"\n        },\n        {\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"weight\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\",\n          \"exerciseId\": \"<guid>\"\n        }\n      ]\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/workout",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"workout"
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "e2bcf6fd-fe89-41d4-9396-37f59dd51223",
+									"name": "Success",
 									"originalRequest": {
 										"method": "POST",
 										"header": [
 											{
-												"key": "Content-Type",
-												"value": "application/json"
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
 											},
 											{
 												"key": "Accept",
@@ -454,7 +1561,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"name\": \"Test Workout Template\",\n  \"description\": \"The Test Workout Template is good for training the chest and the biceps.\",\n  \"blockTemplateRequests\": [\n    {\n      \"order\": \"1\",\n      \"itemTemplateRequests\": [\n        {\n          \"exerciseId\": \"9987fab0-4dc7-414e-ae73-0471fc980a49\",\n          \"sets\": \"4\",\n          \"reps\": \"8\",\n          \"order\": \"1\",\n          \"comment\": \"Be careful with the bicep curls!\"\n        },\n        {\n          \"exerciseId\": \"e235a108-b5ad-4c0a-b8e6-3f06218162c4\",\n          \"sets\": \"5\",\n          \"reps\": \"8\",\n          \"order\": \"2\"\n        }\n      ]\n    }\n  ]\n}",
+											"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"start\": \"<dateTime>\",\n  \"comment\": \"<string>\",\n  \"workoutBlocks\": [\n    {\n      \"order\": \"<integer>\",\n      \"workoutItems\": [\n        {\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"weight\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\",\n          \"exerciseId\": \"<guid>\"\n        },\n        {\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"weight\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\",\n          \"exerciseId\": \"<guid>\"\n        }\n      ]\n    },\n    {\n      \"order\": \"<integer>\",\n      \"workoutItems\": [\n        {\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"weight\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\",\n          \"exerciseId\": \"<guid>\"\n        },\n        {\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"weight\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\",\n          \"exerciseId\": \"<guid>\"\n        }\n      ]\n    }\n  ]\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -462,48 +1569,120 @@
 											}
 										},
 										"url": {
-											"raw": "{{baseUrl}}/api/template",
+											"raw": "{{baseUrl}}/api/workout",
 											"host": [
 												"{{baseUrl}}"
 											],
 											"path": [
 												"api",
-												"template"
+												"workout"
 											]
 										}
 									},
-									"status": "Created",
-									"code": 201,
+									"status": "OK",
+									"code": 200,
 									"_postman_previewlanguage": "json",
 									"header": [
 										{
 											"key": "Content-Type",
 											"value": "application/json"
-										},
-										{
-											"key": "Date",
-											"value": "Tue, 06 Jun 2023 18:51:50 GMT"
-										},
-										{
-											"key": "Server",
-											"value": "Kestrel"
-										},
-										{
-											"key": "Location",
-											"value": "/api/template/7caf44dd-0a61-40e1-953e-96da416f692e"
-										},
-										{
-											"key": "Transfer-Encoding",
-											"value": "chunked"
 										}
 									],
 									"cookie": [],
-									"body": "{\n    \"id\": \"7caf44dd-0a61-40e1-953e-96da416f692e\",\n    \"name\": \"Test Workout Template\",\n    \"description\": \"The Test Workout Template is good for training the chest and the biceps.\",\n    \"blockTemplates\": [\n        {\n            \"order\": 1,\n            \"itemTemplates\": [\n                {\n                    \"exercise\": {\n                        \"id\": \"9987fab0-4dc7-414e-ae73-0471fc980a49\",\n                        \"name\": \"Wide-grip Barbell Curl\",\n                        \"targetMuscleGroup\": \"Biceps\",\n                        \"type\": \"Repeated\",\n                        \"description\": \"Variation of the classic barbell curl with the grip wider than shoulder width. It helps build the inner or short head of the biceps muscles.\",\n                        \"forceType\": \"Pull\",\n                        \"instructions\": [\n                            \"Stand up with your torso upright while holding a barbell at the wide outer handle. The palm of your hands should be facing forward. The elbows should be close to the torso.\",\n                            \"While holding the upper arms stationary, curl the weights forward while contracting the biceps as you breathe out. Only the forearms should move.\",\n                            \"Continue the movement until your biceps are fully contracted and the bar is at shoulder level. Hold the contracted position for a second and squeeye the biceps hard.\",\n                            \"Slowly begin to bring the bar back to starting position as you breathe in.\"\n                        ],\n                        \"secondaryMuscleGroups\": null\n                    },\n                    \"sets\": 4,\n                    \"reps\": 8,\n                    \"order\": 1,\n                    \"comment\": \"Be careful with the bicep curls!\"\n                },\n                {\n                    \"exercise\": {\n                        \"id\": \"e235a108-b5ad-4c0a-b8e6-3f06218162c4\",\n                        \"name\": \"Barbell Bench Press\",\n                        \"targetMuscleGroup\": \"Chest\",\n                        \"type\": \"Repeated\",\n                        \"description\": \"The barbell bench press is a classic exercise popular among all weight lifting circles.\",\n                        \"forceType\": \"Push (Bilateral)\",\n                        \"instructions\": [\n                            \"Lie flat on a bench and set your hands just outside of shoulder width.\",\n                            \"Set your shoulder blades by pinching them together and driving them into the bench.\",\n                            \"Take a deep breath and allow your spotter to help you with the lift off in order to maintain tightness through your upper back.\",\n                            \"Let the weight settle and ensure your upper back remains tight after lift off.\",\n                            \"Inhale and allow the bar to descend slowly by unlocking the elbows.\",\n                            \"Lower the bar in a straight line to the base of the sternum (breastbone) and touch the chest.\",\n                            \"Push the bar back up in a straight line by pressing yourself into the bench, driving your feet into the floor for leg drive, and extending the elbows.\",\n                            \"Repeat for the desired number of repetitions.\"\n                        ],\n                        \"secondaryMuscleGroups\": [\n                            \"Shoulders\",\n                            \"Triceps\"\n                        ]\n                    },\n                    \"sets\": 5,\n                    \"reps\": 8,\n                    \"order\": 2,\n                    \"comment\": null\n                }\n            ]\n        }\n    ]\n}"
+									"body": "{\n  \"id\": \"<guid>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"description\": \"<string>\",\n  \"start\": \"<dateTime>\",\n  \"end\": \"<dateTime>\",\n  \"comment\": \"<string>\",\n  \"workoutBlocks\": [\n    {\n      \"order\": \"<integer>\",\n      \"status\": \"<string>\",\n      \"workoutItems\": [\n        {\n          \"sets\": \"<integer>\",\n          \"currentSet\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"weight\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"status\": \"<string>\",\n          \"comment\": \"<string>\",\n          \"exercise\": {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"targetMuscleGroup\": \"<string>\",\n            \"type\": \"<string>\",\n            \"description\": \"<string>\",\n            \"forceType\": \"<string>\",\n            \"instructions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"secondaryMuscleGroups\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        {\n          \"sets\": \"<integer>\",\n          \"currentSet\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"weight\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"status\": \"<string>\",\n          \"comment\": \"<string>\",\n          \"exercise\": {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"targetMuscleGroup\": \"<string>\",\n            \"type\": \"<string>\",\n            \"description\": \"<string>\",\n            \"forceType\": \"<string>\",\n            \"instructions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"secondaryMuscleGroups\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      ]\n    },\n    {\n      \"order\": \"<integer>\",\n      \"status\": \"<string>\",\n      \"workoutItems\": [\n        {\n          \"sets\": \"<integer>\",\n          \"currentSet\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"weight\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"status\": \"<string>\",\n          \"comment\": \"<string>\",\n          \"exercise\": {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"targetMuscleGroup\": \"<string>\",\n            \"type\": \"<string>\",\n            \"description\": \"<string>\",\n            \"forceType\": \"<string>\",\n            \"instructions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"secondaryMuscleGroups\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        {\n          \"sets\": \"<integer>\",\n          \"currentSet\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"weight\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"status\": \"<string>\",\n          \"comment\": \"<string>\",\n          \"exercise\": {\n            \"id\": \"<string>\",\n            \"name\": \"<string>\",\n            \"targetMuscleGroup\": \"<string>\",\n            \"type\": \"<string>\",\n            \"description\": \"<string>\",\n            \"forceType\": \"<string>\",\n            \"instructions\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"secondaryMuscleGroups\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      ]\n    }\n  ]\n}"
+								},
+								{
+									"id": "f8fba4a5-dd66-4fcf-b716-4269bad19103",
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"start\": \"<dateTime>\",\n  \"comment\": \"<string>\",\n  \"workoutBlocks\": [\n    {\n      \"order\": \"<integer>\",\n      \"workoutItems\": [\n        {\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"weight\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\",\n          \"exerciseId\": \"<guid>\"\n        },\n        {\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"weight\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\",\n          \"exerciseId\": \"<guid>\"\n        }\n      ]\n    },\n    {\n      \"order\": \"<integer>\",\n      \"workoutItems\": [\n        {\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"weight\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\",\n          \"exerciseId\": \"<guid>\"\n        },\n        {\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"weight\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\",\n          \"exerciseId\": \"<guid>\"\n        }\n      ]\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/workout",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"workout"
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"id": "a5cb2f78-cae0-4c35-b6aa-b95746d18454",
+									"name": "Forbidden",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"start\": \"<dateTime>\",\n  \"comment\": \"<string>\",\n  \"workoutBlocks\": [\n    {\n      \"order\": \"<integer>\",\n      \"workoutItems\": [\n        {\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"weight\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\",\n          \"exerciseId\": \"<guid>\"\n        },\n        {\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"weight\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\",\n          \"exerciseId\": \"<guid>\"\n        }\n      ]\n    },\n    {\n      \"order\": \"<integer>\",\n      \"workoutItems\": [\n        {\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"weight\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\",\n          \"exerciseId\": \"<guid>\"\n        },\n        {\n          \"sets\": \"<integer>\",\n          \"reps\": \"<integer>\",\n          \"weight\": \"<integer>\",\n          \"order\": \"<integer>\",\n          \"comment\": \"<string>\",\n          \"exerciseId\": \"<guid>\"\n        }\n      ]\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/workout",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"workout"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
 								}
 							]
 						}
 					],
-					"id": "85d1f6e1-4f84-4d45-9287-b83319405820"
+					"id": "3c3077ae-0d5e-4a6a-b092-89e84d3f47e4"
 				},
 				{
 					"name": "exercise",
@@ -513,7 +1692,7 @@
 							"item": [
 								{
 									"name": "Update Exercise Endpoint",
-									"id": "317a0b21-32dc-4ba6-841a-0173c00c3e79",
+									"id": "6d536cd5-4d97-430e-b68f-8e1e486afd64",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -569,7 +1748,7 @@
 									},
 									"response": [
 										{
-											"id": "b4d4f271-71dc-4889-81e9-29ee321577e2",
+											"id": "897d97f6-da29-4ac1-8571-a31415c87810",
 											"name": "Success",
 											"originalRequest": {
 												"method": "PUT",
@@ -622,10 +1801,10 @@
 												}
 											],
 											"cookie": [],
-											"body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"targetMuscleGroup\": \"<string>\",\n  \"description\": \"<string>\",\n  \"forceType\": \"<string>\",\n  \"instructions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"secondaryMuscleGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+											"body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"targetMuscleGroup\": \"<string>\",\n  \"type\": \"<string>\",\n  \"description\": \"<string>\",\n  \"forceType\": \"<string>\",\n  \"instructions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"secondaryMuscleGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
 										},
 										{
-											"id": "6684bbfd-f736-4cd8-8531-7fb2244d9e3e",
+											"id": "44ced5c4-75b6-4b11-b1b1-0c3cefaa5114",
 											"name": "Unauthorized",
 											"originalRequest": {
 												"method": "PUT",
@@ -677,7 +1856,7 @@
 											"body": ""
 										},
 										{
-											"id": "6cd13f6b-2e97-46ee-9671-1a462a810d9e",
+											"id": "d05ea6be-59c7-4134-ada3-570173f2b7a1",
 											"name": "Forbidden",
 											"originalRequest": {
 												"method": "PUT",
@@ -732,7 +1911,7 @@
 								},
 								{
 									"name": "Get Exercise By Id Endpoint",
-									"id": "ed857ef3-9d48-4852-a343-d63e3878e5d4",
+									"id": "008aaf2d-a1f2-421a-9020-d0541043a533",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -767,7 +1946,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "9987fab0-4dc7-414e-ae73-0471fc980a49",
+													"value": "<string>",
 													"description": "(Required) "
 												}
 											]
@@ -775,11 +1954,16 @@
 									},
 									"response": [
 										{
-											"id": "476d2aeb-e8d7-45d1-8f29-17bce63c4590",
-											"name": "Get Exercise By Id Endpoint",
+											"id": "02e2dd86-cef8-48c2-a6d7-99e338853b86",
+											"name": "Success",
 											"originalRequest": {
 												"method": "GET",
 												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													},
 													{
 														"key": "Accept",
 														"value": "application/json"
@@ -798,7 +1982,7 @@
 													"variable": [
 														{
 															"key": "id",
-															"value": "9987fab0-4dc7-414e-ae73-0471fc980a49",
+															"value": "<string>",
 															"description": "(Required) "
 														}
 													]
@@ -811,28 +1995,59 @@
 												{
 													"key": "Content-Type",
 													"value": "application/json"
-												},
-												{
-													"key": "Date",
-													"value": "Tue, 06 Jun 2023 18:45:22 GMT"
-												},
-												{
-													"key": "Server",
-													"value": "Kestrel"
-												},
-												{
-													"key": "Transfer-Encoding",
-													"value": "chunked"
 												}
 											],
 											"cookie": [],
-											"body": "{\n    \"id\": \"9987fab0-4dc7-414e-ae73-0471fc980a49\",\n    \"name\": \"Wide-grip Barbell Curl\",\n    \"targetMuscleGroup\": \"Biceps\",\n    \"type\": \"Repeated\",\n    \"description\": \"Variation of the classic barbell curl with the grip wider than shoulder width. It helps build the inner or short head of the biceps muscles.\",\n    \"forceType\": \"Pull\",\n    \"instructions\": [\n        \"Stand up with your torso upright while holding a barbell at the wide outer handle. The palm of your hands should be facing forward. The elbows should be close to the torso.\",\n        \"While holding the upper arms stationary, curl the weights forward while contracting the biceps as you breathe out. Only the forearms should move.\",\n        \"Continue the movement until your biceps are fully contracted and the bar is at shoulder level. Hold the contracted position for a second and squeeye the biceps hard.\",\n        \"Slowly begin to bring the bar back to starting position as you breathe in.\"\n    ],\n    \"secondaryMuscleGroups\": null\n}"
+											"body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"targetMuscleGroup\": \"<string>\",\n  \"type\": \"<string>\",\n  \"description\": \"<string>\",\n  \"forceType\": \"<string>\",\n  \"instructions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"secondaryMuscleGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+										},
+										{
+											"id": "2b536299-cf58-449e-8ae7-83736b76f7f6",
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/exercise/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"exercise",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
 										}
 									]
 								},
 								{
 									"name": "Delete Exercise Endpoint",
-									"id": "0d53f8ed-d1b7-4a28-876a-40c8b52b7b1d",
+									"id": "42d07525-f7b8-45b8-9c1f-9ef52290b760",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -875,7 +2090,7 @@
 									},
 									"response": [
 										{
-											"id": "9bb101ed-6db2-4e06-8336-15b27803ee3c",
+											"id": "3da3edbe-0e0e-4563-9e15-4304e70ea672",
 											"name": "Success",
 											"originalRequest": {
 												"method": "DELETE",
@@ -922,7 +2137,7 @@
 											"body": "{}"
 										},
 										{
-											"id": "a0d1189d-3afb-4933-9a8d-29411050598e",
+											"id": "72c656cf-0a68-499d-8e0a-7a2b86243791",
 											"name": "Unauthorized",
 											"originalRequest": {
 												"method": "DELETE",
@@ -967,11 +2182,11 @@
 									]
 								}
 							],
-							"id": "1471f121-7416-46ea-ac98-49869d80b0ea"
+							"id": "cbd28109-717b-418d-958d-5afe94d00612"
 						},
 						{
 							"name": "Get Exercises Endpoint",
-							"id": "d3c04674-c8f9-41c5-919c-e6d7028d6fed",
+							"id": "7c1909ce-5891-4288-b9d6-1679ba12b009",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1006,21 +2221,16 @@
 							},
 							"response": [
 								{
-									"id": "a105732e-d10c-4507-b7f7-3771325fc13e",
+									"id": "b2db4f6d-3628-435a-b741-62bb88752938",
 									"name": "Success",
 									"originalRequest": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{bearerToken}}",
-													"type": "string"
-												}
-											]
-										},
 										"method": "GET",
 										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											},
 											{
 												"key": "Accept",
 												"value": "application/json"
@@ -1044,25 +2254,13 @@
 										{
 											"key": "Content-Type",
 											"value": "application/json"
-										},
-										{
-											"key": "Date",
-											"value": "Mon, 05 Jun 2023 19:48:04 GMT"
-										},
-										{
-											"key": "Server",
-											"value": "Kestrel"
-										},
-										{
-											"key": "Transfer-Encoding",
-											"value": "chunked"
 										}
 									],
 									"cookie": [],
-									"body": "[\n    {\n        \"id\": \"e235a108-b5ad-4c0a-b8e6-3f06218162c4\",\n        \"name\": \"Barbell Bench Press\",\n        \"targetMuscleGroup\": \"Chest\",\n        \"description\": \"The barbell bench press is a classic exercise popular among all weight lifting circles.\",\n        \"forceType\": \"Push (Bilateral)\",\n        \"instructions\": [\n            \"Lie flat on a bench and set your hands just outside of shoulder width.\",\n            \"Set your shoulder blades by pinching them together and driving them into the bench.\",\n            \"Take a deep breath and allow your spotter to help you with the lift off in order to maintain tightness through your upper back.\",\n            \"Let the weight settle and ensure your upper back remains tight after lift off.\",\n            \"Inhale and allow the bar to descend slowly by unlocking the elbows.\",\n            \"Lower the bar in a straight line to the base of the sternum (breastbone) and touch the chest.\",\n            \"Push the bar back up in a straight line by pressing yourself into the bench, driving your feet into the floor for leg drive, and extending the elbows.\",\n            \"Repeat for the desired number of repetitions.\"\n        ],\n        \"secondaryMuscleGroups\": [\n            \"Shoulders\",\n            \"Triceps\"\n        ]\n    }\n]"
+									"body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"targetMuscleGroup\": \"<string>\",\n    \"type\": \"<string>\",\n    \"description\": \"<string>\",\n    \"forceType\": \"<string>\",\n    \"instructions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"secondaryMuscleGroups\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"targetMuscleGroup\": \"<string>\",\n    \"type\": \"<string>\",\n    \"description\": \"<string>\",\n    \"forceType\": \"<string>\",\n    \"instructions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"secondaryMuscleGroups\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n]"
 								},
 								{
-									"id": "e16bfe12-e01e-4dba-8f17-a994f567d85a",
+									"id": "b69a7947-9a1d-463b-a06c-c7907bccf186",
 									"name": "Unauthorized",
 									"originalRequest": {
 										"method": "GET",
@@ -1100,7 +2298,7 @@
 						},
 						{
 							"name": "Create a new exercise",
-							"id": "b6bd9c9f-2ae5-4f0a-abf7-d9abd8eb1b1c",
+							"id": "e43df46f-a974-4574-ae8b-354a3781bd04",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1128,7 +2326,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"name\": \"Wide-grip Barbell Curl\",\n  \"targetMuscleGroup\": \"Biceps\",\n  \"description\": \"Variation of the classic barbell curl with the grip wider than shoulder width. It helps build the inner or short head of the biceps muscles.\",\n  \"forceType\": \"Pull\",\n  \"type\": \"Repeated\",\n  \"instructions\": [\n    \"Stand up with your torso upright while holding a barbell at the wide outer handle. The palm of your hands should be facing forward. The elbows should be close to the torso.\",\n    \"While holding the upper arms stationary, curl the weights forward while contracting the biceps as you breathe out. Only the forearms should move.\",\n    \"Continue the movement until your biceps are fully contracted and the bar is at shoulder level. Hold the contracted position for a second and squeeye the biceps hard.\",\n    \"Slowly begin to bring the bar back to starting position as you breathe in.\"\n  ]\n}",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"targetMuscleGroup\": \"<string>\",\n  \"description\": \"<string>\",\n  \"forceType\": \"<string>\",\n  \"type\": \"<string>\",\n  \"instructions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"secondaryMuscleGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1149,7 +2347,55 @@
 							},
 							"response": [
 								{
-									"id": "ee12cbe6-1513-4211-a422-7f5169711146",
+									"id": "688642a4-7a13-4462-b4ea-4dd523e8ef09",
+									"name": "Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"<string>\",\n  \"targetMuscleGroup\": \"<string>\",\n  \"description\": \"<string>\",\n  \"forceType\": \"<string>\",\n  \"type\": \"<string>\",\n  \"instructions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"secondaryMuscleGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/exercise",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"exercise"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"targetMuscleGroup\": \"<string>\",\n  \"type\": \"<string>\",\n  \"description\": \"<string>\",\n  \"forceType\": \"<string>\",\n  \"instructions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"secondaryMuscleGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}"
+								},
+								{
+									"id": "690b968a-bc07-4392-a11b-d3551992e960",
 									"name": "Bad Request",
 									"originalRequest": {
 										"method": "POST",
@@ -1194,10 +2440,10 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errors\": {\n    \"Ut7_\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}"
+									"body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"errors\": {\n    \"occaecat_d_e\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"consectetur69f\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}"
 								},
 								{
-									"id": "0e24aec6-1d11-4d2c-b1fd-db6be01dc1d8",
+									"id": "04e2b469-29f0-4684-a084-748ddfe4c343",
 									"name": "Forbidden",
 									"originalRequest": {
 										"method": "POST",
@@ -1241,7 +2487,7 @@
 									"body": ""
 								},
 								{
-									"id": "e10f2404-f9af-49ee-ab35-be3514d67984",
+									"id": "6abb14ef-9d21-4e5b-89a7-e344ed662f1a",
 									"name": "Unauthorized",
 									"originalRequest": {
 										"method": "POST",
@@ -1283,77 +2529,201 @@
 									],
 									"cookie": [],
 									"body": ""
-								},
-								{
-									"id": "e815cef1-81cf-4556-a055-804312fbba48",
-									"name": "Create a new exercise",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											},
-											{
-												"key": "Accept",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"name\": \"Wide-grip Barbell Curl\",\n  \"targetMuscleGroup\": \"Biceps\",\n  \"description\": \"Variation of the classic barbell curl with the grip wider than shoulder width. It helps build the inner or short head of the biceps muscles.\",\n  \"forceType\": \"Pull\",\n  \"type\": \"Repeated\",\n  \"instructions\": [\n    \"Stand up with your torso upright while holding a barbell at the wide outer handle. The palm of your hands should be facing forward. The elbows should be close to the torso.\",\n    \"While holding the upper arms stationary, curl the weights forward while contracting the biceps as you breathe out. Only the forearms should move.\",\n    \"Continue the movement until your biceps are fully contracted and the bar is at shoulder level. Hold the contracted position for a second and squeeye the biceps hard.\",\n    \"Slowly begin to bring the bar back to starting position as you breathe in.\"\n  ]\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/api/exercise",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"api",
-												"exercise"
-											]
-										}
-									},
-									"status": "Created",
-									"code": 201,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										},
-										{
-											"key": "Date",
-											"value": "Tue, 06 Jun 2023 18:44:07 GMT"
-										},
-										{
-											"key": "Server",
-											"value": "Kestrel"
-										},
-										{
-											"key": "Location",
-											"value": "/api/exercise/9987fab0-4dc7-414e-ae73-0471fc980a49"
-										},
-										{
-											"key": "Transfer-Encoding",
-											"value": "chunked"
-										}
-									],
-									"cookie": [],
-									"body": "{\n    \"id\": \"9987fab0-4dc7-414e-ae73-0471fc980a49\",\n    \"name\": \"Wide-grip Barbell Curl\",\n    \"targetMuscleGroup\": \"Biceps\",\n    \"type\": \"Repeated\",\n    \"description\": \"Variation of the classic barbell curl with the grip wider than shoulder width. It helps build the inner or short head of the biceps muscles.\",\n    \"forceType\": \"Pull\",\n    \"instructions\": [\n        \"Stand up with your torso upright while holding a barbell at the wide outer handle. The palm of your hands should be facing forward. The elbows should be close to the torso.\",\n        \"While holding the upper arms stationary, curl the weights forward while contracting the biceps as you breathe out. Only the forearms should move.\",\n        \"Continue the movement until your biceps are fully contracted and the bar is at shoulder level. Hold the contracted position for a second and squeeye the biceps hard.\",\n        \"Slowly begin to bring the bar back to starting position as you breathe in.\"\n    ],\n    \"secondaryMuscleGroups\": null\n}"
 								}
 							]
 						}
 					],
-					"id": "42774a84-aea3-4b3f-bcc5-df92f9f9ec96"
+					"id": "ece8f231-26c7-41cf-8c4b-a5ebb218cec4"
+				},
+				{
+					"name": "Create Workout Plan Endpoint",
+					"id": "0a8e7a47-6001-4d77-b12a-611774009022",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "text/plain"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"assignedTo\": \"<string>\",\n  \"start\": \"<dateTime>\",\n  \"end\": \"<dateTime>\",\n  \"numberOfWeeks\": \"<integer>\",\n  \"numberOfDays\": \"<integer>\",\n  \"workoutIds\": [\n    \"<guid>\",\n    \"<guid>\"\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/plan",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"plan"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "7ba4fc75-81a8-46ad-bb93-f860509403db",
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									},
+									{
+										"key": "Accept",
+										"value": "text/plain"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"assignedTo\": \"<string>\",\n  \"start\": \"<dateTime>\",\n  \"end\": \"<dateTime>\",\n  \"numberOfWeeks\": \"<integer>\",\n  \"numberOfDays\": \"<integer>\",\n  \"workoutIds\": [\n    \"<guid>\",\n    \"<guid>\"\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/plan",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"plan"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{}"
+						},
+						{
+							"id": "8b986d8f-5a79-4547-8dd0-07d10d83b6e1",
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"assignedTo\": \"<string>\",\n  \"start\": \"<dateTime>\",\n  \"end\": \"<dateTime>\",\n  \"numberOfWeeks\": \"<integer>\",\n  \"numberOfDays\": \"<integer>\",\n  \"workoutIds\": [\n    \"<guid>\",\n    \"<guid>\"\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/plan",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"plan"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"id": "98d05feb-757c-4ef2-9005-48b3f1be9ec6",
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"assignedTo\": \"<string>\",\n  \"start\": \"<dateTime>\",\n  \"end\": \"<dateTime>\",\n  \"numberOfWeeks\": \"<integer>\",\n  \"numberOfDays\": \"<integer>\",\n  \"workoutIds\": [\n    \"<guid>\",\n    \"<guid>\"\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/plan",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"plan"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
 				}
 			],
-			"id": "e34f672e-c60d-43c0-b9f1-a561ed905d2b"
+			"id": "6779587a-f938-4cab-b5dd-104f1a33be80"
 		}
 	],
 	"auth": {
@@ -1370,7 +2740,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "ade72424-2529-434a-b739-4801f6145576",
+				"id": "11b18564-7082-4ea9-ade8-b6483f3d7d4c",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1380,7 +2750,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "d6fa6dec-31ed-44fd-b96e-6d8aae1a13b6",
+				"id": "91f484fd-5668-456c-8e57-615722817019",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1390,15 +2760,15 @@
 	],
 	"variable": [
 		{
-			"id": "38f04917-bfc2-4e29-8904-4f98c87bf47f",
+			"id": "82d48394-f865-4f20-a82c-e3c8e238fd5d",
 			"key": "baseUrl",
 			"value": "http://localhost:5117",
 			"type": "string"
 		},
 		{
-			"id": "37669517-00c6-4691-8332-21731b35b701",
+			"id": "74e4ade9-170f-4042-a0e8-928e7abf089b",
 			"key": "bearerToken",
-			"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6Imluc18yUTBobER6QXR1aUVBWjZVUENWdms1Z2xMZGQiLCJ0eXAiOiJKV1QifQ.eyJlbWFpbCI6ImNvbmZvcnRpLmNocmlzdGlhbkBnbWFpbC5jb20iLCJleHAiOjIwMDEzNTQxNDIsImlhdCI6MTY4NTk5NDE0MiwiaWQiOiJ1c2VyXzJROHVjRTlGN3ZLZnBHc0hBbnFRRGFDck9wVyIsImlzcyI6Imh0dHBzOi8vZmFzdC1zbG90aC05NS5jbGVyay5hY2NvdW50cy5kZXYiLCJqdGkiOiJkOWFhYzhhNzQ3ZGVjMDc2ZjcyMiIsIm5hbWUiOm51bGwsIm5iZiI6MTY4NTk5NDEzNywic3ViIjoidXNlcl8yUTh1Y0U5Rjd2S2ZwR3NIQW5xUURhQ3JPcFciLCJzdXJuYW1lIjpudWxsfQ.DL48Imt0K5Ee3U6v3OB6Bm6qd-7idORQSndo0FW44Sste4Iyt6z0GUpxQ4O1nlHJd5mcxOJ9faN_r5pNT428s68fzCqDLdaaaLzp4ZSdSEcX7D3c2nHOVuIptYD8etDGL9nCqTOR2q7yZQwCBcQMeEHWRhiM1L2KChbgjjr0x4v8l2vJz6T5MqZJHrRuwl9aOZ5SvotINg-vi12SkFZifzb1QuZy588pr09KmOFvQP3Fhvhx3Ek-Mr90serLIaucV5mMjJ-kv-X1AE7BhHwbj6To9IB2DPUZ9wSt0G-SEnE4n8SYPCnqpM-sVYkFDF3pAeU74x12fzc7OvdbWec9zw",
+			"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6Imluc18yUTBobER6QXR1aUVBWjZVUENWdms1Z2xMZGQiLCJ0eXAiOiJKV1QifQ.eyJlbWFpbCI6ImNvbmZvcnRpLmNocmlzdGlhbkBnbWFpbC5jb20iLCJleHAiOjIwMDE1MjY1MDAsImlhdCI6MTY4NjE2NjUwMCwiaWQiOiJ1c2VyXzJROHVjRTlGN3ZLZnBHc0hBbnFRRGFDck9wVyIsImlzcyI6Imh0dHBzOi8vZmFzdC1zbG90aC05NS5jbGVyay5hY2NvdW50cy5kZXYiLCJqdGkiOiJmMGI3YmU1ZTMwYTc3OGZlMTk2OSIsIm5hbWUiOm51bGwsIm5iZiI6MTY4NjE2NjQ5NSwic3ViIjoidXNlcl8yUTh1Y0U5Rjd2S2ZwR3NIQW5xUURhQ3JPcFciLCJzdXJuYW1lIjpudWxsfQ.gfZd0jxj6sJvX17nAoQFn6mRhI8bWNoN5FKN5IGqrNzlmCxgspQRz5s1s63hN33gM8tL5g8DMeZTrptEteKROklweB9EirjOIVEdMtSgtLg9lC86TWq6Xf8xGSKJOUmZMlViCfIHhaUAEtHRJ_Nmqe-YqKUiyZdMRmNIf-hNDt6EnBsTlij1lX9Q7DSsDvHCHbl1FARZlx867pSSd2c9TeUWbX4lQP3zioVTAfyDwrYSvNUwg-YxSp7Oj1Ig45WjB---lXGDYQZvb9uQwCih7PTsCsOtmcjMUtoZq5nJhp6hJhxKSLXYfizo45WW4TvN66_gedE54CtllwpWkgyKtQ",
 			"type": "string"
 		}
 	]

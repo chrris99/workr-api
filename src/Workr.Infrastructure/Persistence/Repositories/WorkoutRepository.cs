@@ -49,18 +49,47 @@ public sealed class WorkoutRepository : IWorkoutRepository
         return workout ?? Result.Failure<Workout>(DomainErrors.WorkoutTemplate.NotFoundById);
     }
 
-    public Task<Result<List<Workout>>> GetWorkouts(string userId)
+    public async Task<Result<List<Workout>>> GetWorkouts(string userId)
     {
-        throw new NotImplementedException();
+        var templates = await _context.Workouts
+            .Where(template => template.CreatedBy.Equals(userId))
+            .Include(workout => workout.Blocks)
+            .ThenInclude(block => block.Items)
+            .ThenInclude(item => item.Exercise)
+            .ToListAsync();
+
+        return templates;
     }
 
-    public Task<Result> UpdateWorkout(Workout workout)
+    public async Task<Result> UpdateWorkout(Workout workout)
     {
-        throw new NotImplementedException();
+        var entity = await _context.Workouts
+            .FindAsync(workout.Id);
+
+        if (entity == null)
+            return Result.Failure(DomainErrors.Workout.NotFoundById);
+
+        if (entity.CreatedBy != workout.CreatedBy)
+            return Result.Failure(DomainErrors.Workout.Forbidden);
+
+        _context.Workouts.Update(workout);
+        await _context.SaveChangesAsync();
+
+        return Result.Success();
     }
 
-    public Task<Result> DeleteWorkout(Guid workoutId, string userId)
+    public async Task<Result> DeleteWorkout(Guid workoutId, string userId)
     {
-        throw new NotImplementedException();
+        var workout = await _context.Workouts.FindAsync(workoutId);
+
+        if (workout == null) return Result.Success();
+
+        if (workout.CreatedBy != userId)
+            return Result.Failure(DomainErrors.Workout.Forbidden); // should return no content and success?
+        
+        _context.Workouts.Remove(workout);
+        await _context.SaveChangesAsync();
+
+        return Result.Success();
     }
 }

@@ -13,8 +13,8 @@ using Workr.Infrastructure.Persistence;
 namespace Workr.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230529184509_AddWorkoutPlan")]
-    partial class AddWorkoutPlan
+    [Migration("20230608061149_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,13 +26,14 @@ namespace Workr.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Workr.Domain.Exercise", b =>
+            modelBuilder.Entity("Workr.Domain.Exercise.Exercise", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<string>("CreatedBy")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Description")
@@ -58,12 +59,40 @@ namespace Workr.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.HasKey("Id");
 
                     b.ToTable("Exercises");
                 });
 
-            modelBuilder.Entity("Workr.Domain.Workout", b =>
+            modelBuilder.Entity("Workr.Domain.Workout.Template.WorkoutTemplate", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("WorkoutTemplates", (string)null);
+                });
+
+            modelBuilder.Entity("Workr.Domain.Workout.Workout", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -105,7 +134,7 @@ namespace Workr.Infrastructure.Migrations
                     b.ToTable("Workouts", (string)null);
                 });
 
-            modelBuilder.Entity("Workr.Domain.WorkoutPlan", b =>
+            modelBuilder.Entity("Workr.Domain.Workout.WorkoutPlan", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -153,13 +182,89 @@ namespace Workr.Infrastructure.Migrations
                     b.ToTable("WorkoutPlans");
                 });
 
-            modelBuilder.Entity("Workr.Domain.Workout", b =>
+            modelBuilder.Entity("Workr.Domain.Workout.Template.WorkoutTemplate", b =>
                 {
-                    b.HasOne("Workr.Domain.WorkoutPlan", null)
+                    b.OwnsMany("Workr.Domain.Workout.Template.WorkoutBlockTemplate", "BlockTemplates", b1 =>
+                        {
+                            b1.Property<Guid>("WorkoutTemplateId")
+                                .HasColumnType("uuid");
+
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("integer");
+
+                            NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b1.Property<int>("Id"));
+
+                            b1.Property<int>("Order")
+                                .HasColumnType("integer");
+
+                            b1.HasKey("WorkoutTemplateId", "Id");
+
+                            b1.ToTable("WorkoutBlockTemplates", (string)null);
+
+                            b1.WithOwner()
+                                .HasForeignKey("WorkoutTemplateId");
+
+                            b1.OwnsMany("Workr.Domain.Workout.Template.WorkoutItemTemplate", "ItemTemplates", b2 =>
+                                {
+                                    b2.Property<Guid>("WorkoutBlockTemplateWorkoutTemplateId")
+                                        .HasColumnType("uuid");
+
+                                    b2.Property<int>("WorkoutBlockTemplateId")
+                                        .HasColumnType("integer");
+
+                                    b2.Property<int>("Id")
+                                        .ValueGeneratedOnAdd()
+                                        .HasColumnType("integer");
+
+                                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b2.Property<int>("Id"));
+
+                                    b2.Property<string>("Comment")
+                                        .HasColumnType("text");
+
+                                    b2.Property<Guid>("ExerciseId")
+                                        .HasColumnType("uuid");
+
+                                    b2.Property<int>("Order")
+                                        .HasColumnType("integer");
+
+                                    b2.Property<int>("Reps")
+                                        .HasColumnType("integer");
+
+                                    b2.Property<int>("Sets")
+                                        .HasColumnType("integer");
+
+                                    b2.HasKey("WorkoutBlockTemplateWorkoutTemplateId", "WorkoutBlockTemplateId", "Id");
+
+                                    b2.HasIndex("ExerciseId");
+
+                                    b2.ToTable("WorkoutItemTemplates", (string)null);
+
+                                    b2.HasOne("Workr.Domain.Exercise.Exercise", "Exercise")
+                                        .WithMany()
+                                        .HasForeignKey("ExerciseId")
+                                        .OnDelete(DeleteBehavior.Cascade)
+                                        .IsRequired();
+
+                                    b2.WithOwner()
+                                        .HasForeignKey("WorkoutBlockTemplateWorkoutTemplateId", "WorkoutBlockTemplateId");
+
+                                    b2.Navigation("Exercise");
+                                });
+
+                            b1.Navigation("ItemTemplates");
+                        });
+
+                    b.Navigation("BlockTemplates");
+                });
+
+            modelBuilder.Entity("Workr.Domain.Workout.Workout", b =>
+                {
+                    b.HasOne("Workr.Domain.Workout.WorkoutPlan", null)
                         .WithMany("Workouts")
                         .HasForeignKey("WorkoutPlanId");
 
-                    b.OwnsMany("Workr.Domain.WorkoutBlock", "Blocks", b1 =>
+                    b.OwnsMany("Workr.Domain.Workout.WorkoutBlock", "Blocks", b1 =>
                         {
                             b1.Property<Guid>("WorkoutId")
                                 .HasColumnType("uuid");
@@ -179,12 +284,12 @@ namespace Workr.Infrastructure.Migrations
 
                             b1.HasKey("WorkoutId", "Id");
 
-                            b1.ToTable("WorkoutBlock");
+                            b1.ToTable("WorkoutBlocks", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("WorkoutId");
 
-                            b1.OwnsMany("Workr.Domain.WorkoutItem", "Items", b2 =>
+                            b1.OwnsMany("Workr.Domain.Workout.WorkoutItem", "Items", b2 =>
                                 {
                                     b2.Property<Guid>("WorkoutBlockWorkoutId")
                                         .HasColumnType("uuid");
@@ -220,13 +325,16 @@ namespace Workr.Infrastructure.Migrations
                                         .IsRequired()
                                         .HasColumnType("text");
 
+                                    b2.Property<int>("Weight")
+                                        .HasColumnType("integer");
+
                                     b2.HasKey("WorkoutBlockWorkoutId", "WorkoutBlockId", "Id");
 
                                     b2.HasIndex("ExerciseId");
 
-                                    b2.ToTable("WorkoutItem");
+                                    b2.ToTable("WorkoutItems", (string)null);
 
-                                    b2.HasOne("Workr.Domain.Exercise", "Exercise")
+                                    b2.HasOne("Workr.Domain.Exercise.Exercise", "Exercise")
                                         .WithMany()
                                         .HasForeignKey("ExerciseId")
                                         .OnDelete(DeleteBehavior.Cascade)
@@ -244,7 +352,7 @@ namespace Workr.Infrastructure.Migrations
                     b.Navigation("Blocks");
                 });
 
-            modelBuilder.Entity("Workr.Domain.WorkoutPlan", b =>
+            modelBuilder.Entity("Workr.Domain.Workout.WorkoutPlan", b =>
                 {
                     b.Navigation("Workouts");
                 });

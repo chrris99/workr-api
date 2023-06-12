@@ -29,8 +29,9 @@ namespace Workr.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uuid");
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Description")
                         .HasColumnType("text");
@@ -70,8 +71,9 @@ namespace Workr.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uuid");
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Description")
                         .HasMaxLength(100)
@@ -319,6 +321,9 @@ namespace Workr.Infrastructure.Migrations
                                     b2.Property<string>("Status")
                                         .IsRequired()
                                         .HasColumnType("text");
+
+                                    b2.Property<int>("Weight")
+                                        .HasColumnType("integer");
 
                                     b2.HasKey("WorkoutBlockWorkoutId", "WorkoutBlockId", "Id");
 

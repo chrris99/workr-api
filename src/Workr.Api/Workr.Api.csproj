@@ -22,10 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\WorkoutSlice\UpdateWorkout" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Workr.Domain\Workr.Domain.csproj" />
     <ProjectReference Include="..\Workr.Infrastructure\Workr.Infrastructure.csproj" />
   </ItemGroup>

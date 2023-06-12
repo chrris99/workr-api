@@ -1,4 +1,5 @@
 using FastEndpoints;
+using Workr.Domain.Exercise;
 using Workr.Domain.Workout;
 using Workr.Web.Features.ExerciseSlice;
 
@@ -24,7 +25,11 @@ public sealed class CreateWorkoutMapper : Mapper<CreateWorkoutRequest, WorkoutRe
                     Reps = i.Reps,
                     Weight = i.Weight,
                     Order = i.Order,
-                    Comment = i.Comment
+                    Comment = i.Comment,
+                    Exercise = new Exercise
+                    {
+                        Id = i.ExerciseId
+                    }
                 }).ToList()
             };
         }).ToList()

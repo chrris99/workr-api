@@ -5,8 +5,8 @@ namespace Workr.Web.Features.WorkoutPlanSlice;
 
 public sealed class WorkoutPlanResponseMapper : ResponseMapper<WorkoutPlanResponse, WorkoutPlan>
 {
-    public override WorkoutPlanResponse FromEntity(WorkoutPlan e)
+    public override WorkoutPlanResponse FromEntity(WorkoutPlan e) => new()
     {
-        return base.FromEntity(e);
-    }
+
+    };
 }

@@ -22,7 +22,7 @@ public sealed class CreateExerciseEndpoint : Endpoint<CreateExerciseRequest, Exe
     public override async Task HandleAsync(CreateExerciseRequest req, CancellationToken ct)
     {
         var exercise = Map.ToEntity(req);
-        
+
         var result = await _repository.CreateExercise(exercise);
         if (result.IsFailure)
             AddError(result.Error.Message, result.Error.Code);

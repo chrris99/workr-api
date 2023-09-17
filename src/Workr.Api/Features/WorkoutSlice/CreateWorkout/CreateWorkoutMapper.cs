@@ -59,7 +59,6 @@ public sealed class CreateWorkoutMapper : Mapper<CreateWorkoutRequest, WorkoutRe
                     i.Exercise.Id.ToString(),
                     i.Exercise.Name,
                     i.Exercise.TargetMuscleGroup,
-                    i.Exercise.Type,
                     i.Exercise.Description,
                     i.Exercise.ForceType,
                     i.Exercise.Instructions,

@@ -30,7 +30,6 @@ public sealed class WorkoutResponseMapper : ResponseMapper<WorkoutResponse, Work
                     i.Exercise.Id.ToString(),
                     i.Exercise.Name,
                     i.Exercise.TargetMuscleGroup,
-                    i.Exercise.Type,
                     i.Exercise.Description,
                     i.Exercise.ForceType,
                     i.Exercise.Instructions,

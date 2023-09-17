@@ -13,6 +13,7 @@ public sealed class GetExercisesEndpoint : EndpointWithoutRequest<List<ExerciseR
     public override void Configure()
     {
         Get("/api/exercise");
+        Claims("id");
         PreProcessors(new RequestLogger<EmptyRequest>());
     }
 

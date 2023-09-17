@@ -22,7 +22,6 @@ public sealed class UpdateExerciseMapper : Mapper<UpdateExerciseRequest, Exercis
         e.Id.ToString(),
         e.Name,
         e.TargetMuscleGroup,
-        e.Type,
         e.Description,
         e.ForceType,
         e.Instructions,

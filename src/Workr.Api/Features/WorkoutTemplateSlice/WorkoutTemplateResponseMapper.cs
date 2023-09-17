@@ -26,7 +26,6 @@ public class WorkoutTemplateResponseMapper : ResponseMapper<WorkoutTemplateRespo
                             exercise.Id.ToString(),
                             exercise.Name,
                             exercise.TargetMuscleGroup,
-                            exercise.Type,
                             exercise.Description,
                             exercise.ForceType,
                             exercise.Instructions,

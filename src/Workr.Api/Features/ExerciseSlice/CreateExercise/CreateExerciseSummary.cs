@@ -14,7 +14,6 @@ public class CreateExerciseSummary : Summary<CreateExerciseEndpoint>
         {
             Name = "Barbell Bench Press",
             Description = "The barbell bench press is a classic exercise popular among all weight lifting circles.",
-            Type = ExerciseType.Repeated,
             ForceType = "Push (Bilateral)",
             TargetMuscleGroup = "Chest",
             SecondaryMuscleGroups = new List<string>

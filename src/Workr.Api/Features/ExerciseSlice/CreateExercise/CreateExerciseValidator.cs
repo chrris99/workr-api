@@ -15,8 +15,5 @@ public sealed class CreateExerciseValidator : Validator<CreateExerciseRequest>
         RuleFor(x => x.TargetMuscleGroup)
             .NotEmpty()
             .WithMessage("Target muscle group is required.");
-
-        RuleFor(x => x.Type)
-            .Must(x => ExerciseType.All().Contains(x));
     }
 }

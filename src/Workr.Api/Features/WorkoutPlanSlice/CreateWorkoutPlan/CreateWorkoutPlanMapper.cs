@@ -7,8 +7,8 @@ public sealed class CreateWorkoutPlanMapper : Mapper<CreateWorkoutPlanRequest, W
 {
     public override WorkoutPlan ToEntity(CreateWorkoutPlanRequest r) => new()
     {
-        
-    }
+
+    };
 
     public override WorkoutPlanResponse FromEntity(WorkoutPlan e)
     {

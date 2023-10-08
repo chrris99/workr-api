@@ -25,13 +25,17 @@ public sealed class WorkoutBlockResponse
 
 public sealed class WorkoutItemResponse
 {
-    public int Sets { get; set; }
+    public List<WorkoutSetResponse> Sets { get; set; }
     public int? CurrentSet { get; set; }
-    public int Reps { get; set; }
-    public int Weight { get; set; }
     public int Order { get; set; }
     public string Status { get; set; }
     public string? Comment { get; set; }
     
     public ExerciseResponse Exercise { get; set; }
+}
+
+public sealed class WorkoutSetResponse
+{
+    public int Reps { get; set; }
+    public int Weight { get; set; }
 }

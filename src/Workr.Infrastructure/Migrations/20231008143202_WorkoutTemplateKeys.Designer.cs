@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Workr.Infrastructure.Persistence;
@@ -12,9 +13,11 @@ using Workr.Infrastructure.Persistence;
 namespace Workr.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231008143202_WorkoutTemplateKeys")]
+    partial class WorkoutTemplateKeys
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -311,7 +314,7 @@ namespace Workr.Infrastructure.Migrations
 
                             b1.OwnsMany("Workr.Domain.Workout.WorkoutItem", "Items", b2 =>
                                 {
-                                    b2.Property<Guid>("WorkoutId")
+                                    b2.Property<Guid>("WorkoutBlockWorkoutId")
                                         .HasColumnType("uuid");
 
                                     b2.Property<int>("WorkoutBlockId")
@@ -339,7 +342,7 @@ namespace Workr.Infrastructure.Migrations
                                         .IsRequired()
                                         .HasColumnType("text");
 
-                                    b2.HasKey("WorkoutId", "WorkoutBlockId", "Id");
+                                    b2.HasKey("WorkoutBlockWorkoutId", "WorkoutBlockId", "Id");
 
                                     b2.HasIndex("ExerciseId");
 
@@ -352,14 +355,14 @@ namespace Workr.Infrastructure.Migrations
                                         .IsRequired();
 
                                     b2.WithOwner()
-                                        .HasForeignKey("WorkoutId", "WorkoutBlockId");
+                                        .HasForeignKey("WorkoutBlockWorkoutId", "WorkoutBlockId");
 
                                     b2.OwnsMany("Workr.Domain.Workout.WorkoutSet", "Sets", b3 =>
                                         {
-                                            b3.Property<Guid>("WorkoutId")
+                                            b3.Property<Guid>("WorkoutItemWorkoutBlockWorkoutId")
                                                 .HasColumnType("uuid");
 
-                                            b3.Property<int>("WorkoutBlockId")
+                                            b3.Property<int>("WorkoutItemWorkoutBlockId")
                                                 .HasColumnType("integer");
 
                                             b3.Property<int>("WorkoutItemId")
@@ -377,12 +380,12 @@ namespace Workr.Infrastructure.Migrations
                                             b3.Property<int>("Weight")
                                                 .HasColumnType("integer");
 
-                                            b3.HasKey("WorkoutId", "WorkoutBlockId", "WorkoutItemId", "Id");
+                                            b3.HasKey("WorkoutItemWorkoutBlockWorkoutId", "WorkoutItemWorkoutBlockId", "WorkoutItemId", "Id");
 
                                             b3.ToTable("WorkoutSets", (string)null);
 
                                             b3.WithOwner()
-                                                .HasForeignKey("WorkoutId", "WorkoutBlockId", "WorkoutItemId");
+                                                .HasForeignKey("WorkoutItemWorkoutBlockWorkoutId", "WorkoutItemWorkoutBlockId", "WorkoutItemId");
                                         });
 
                                     b2.Navigation("Exercise");

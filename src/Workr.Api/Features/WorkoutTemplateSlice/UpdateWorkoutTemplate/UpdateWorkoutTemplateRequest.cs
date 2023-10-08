@@ -14,16 +14,18 @@ public sealed class UpdateWorkoutTemplateRequest
 
 public sealed class UpdateWorkoutBlockTemplateRequest
 {
-    public int Order { get; set; }
     public List<UpdateWorkoutItemTemplateRequest> ItemTemplateRequests { get; set; }
 }
 
 public sealed class UpdateWorkoutItemTemplateRequest
 {
     public Guid ExerciseId { get; set; }
-    
-    public int Sets { get; set; }
-    public int  Reps { get; set; }
-    public int Order { get; set; }
+    public List<UpdateWorkoutSetTemplateRequest> SetTemplateRequests { get; set; }
     public string? Comment { get; set; }
+}
+
+public sealed class UpdateWorkoutSetTemplateRequest
+{
+    public int Reps { get; set; }
+    public int Weight { get; set; }
 }

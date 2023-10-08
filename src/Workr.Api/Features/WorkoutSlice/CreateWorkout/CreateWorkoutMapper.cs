@@ -21,9 +21,11 @@ public sealed class CreateWorkoutMapper : Mapper<CreateWorkoutRequest, WorkoutRe
                 Order = b.Order,
                 Items = b.WorkoutItems.Select(i => new WorkoutItem
                 {
-                    Sets = i.Sets,
-                    Reps = i.Reps,
-                    Weight = i.Weight,
+                    Sets = i.Sets.Select(set => new WorkoutSet
+                    {
+                        Reps = set.Reps,
+                        Weight = set.Weight
+                    }).ToList(),
                     Order = i.Order,
                     Comment = i.Comment,
                     Exercise = new Exercise
@@ -50,9 +52,11 @@ public sealed class CreateWorkoutMapper : Mapper<CreateWorkoutRequest, WorkoutRe
             Status = b.Status,
             WorkoutItems = b.Items.Select(i => new WorkoutItemResponse
             {
-                Sets = i.Sets,
-                Reps = i.Reps,
-                Weight = i.Weight,
+                Sets = i.Sets.Select(set => new WorkoutSetResponse
+                {
+                    Reps = set.Reps,
+                    Weight = set.Weight
+                }).ToList(),
                 Order = i.Order,
                 Comment = i.Comment,
                 Exercise = new ExerciseResponse(

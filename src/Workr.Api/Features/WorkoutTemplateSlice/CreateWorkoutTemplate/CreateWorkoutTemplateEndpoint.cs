@@ -22,6 +22,7 @@ public sealed class CreateWorkoutTemplateEndpoint
 
     public override async Task HandleAsync(CreateWorkoutTemplateRequest req, CancellationToken ct)
     {
+        Logger.LogInformation("hello ${req}", req);
         var workoutTemplate = Map.ToEntity(req);
 
         var result = await _repo.CreateWorkoutTemplate(workoutTemplate);

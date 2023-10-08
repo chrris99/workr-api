@@ -1,5 +1,6 @@
 using FastEndpoints;
 using Workr.Domain.Exercise;
+using Workr.Domain.Workout;
 using Workr.Domain.Workout.Template;
 using Workr.Web.Features.ExerciseSlice;
 
@@ -13,20 +14,23 @@ public sealed class CreateWorkoutTemplateMapper
         Name = r.Name,
         Description = r.Description,
         CreatedBy = r.UserId,
-        BlockTemplates = r.BlockTemplateRequests.Select(btr =>
+        BlockTemplates = r.BlockTemplateRequests.Select((btr, blockIndex) =>
         {
             return new WorkoutBlockTemplate
             {
-                Order = btr.Order,
-                ItemTemplates = btr.ItemTemplateRequests.Select(itr => new WorkoutItemTemplate
+                Order = blockIndex,
+                ItemTemplates = btr.ItemTemplateRequests.Select((itr, itemIndex) => new WorkoutItemTemplate
                 {
                     Exercise = new Exercise
                     {
                         Id = itr.ExerciseId
                     },
-                    Order = itr.Order,
-                    Reps = itr.Reps,
-                    Sets = itr.Sets,
+                    Order = itemIndex,
+                    Sets = itr.SetTemplateRequests.Select(str => new WorkoutSetTemplate
+                    {
+                        Reps = str.Reps,
+                        Weight = str.Weight
+                    }).ToList(),
                     Comment = itr.Comment
                 }).ToList()
             };
@@ -58,8 +62,11 @@ public sealed class CreateWorkoutTemplateMapper
                             exercise.Instructions,
                             exercise.SecondaryMuscleGroups),
                         Order = itemTemplate.Order,
-                        Sets = itemTemplate.Sets,
-                        Reps = itemTemplate.Reps,
+                        Sets = itemTemplate.Sets.Select(setTemplate => new WorkoutSetTemplateResponse
+                        {
+                            Reps = setTemplate.Reps,
+                            Weight = setTemplate.Weight
+                        }).ToList(),
                         Comment = itemTemplate.Comment
                     };
                 }).ToList()

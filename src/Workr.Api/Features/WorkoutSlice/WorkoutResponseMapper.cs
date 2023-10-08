@@ -21,9 +21,11 @@ public sealed class WorkoutResponseMapper : ResponseMapper<WorkoutResponse, Work
             Status = b.Status,
             WorkoutItems = b.Items.Select(i => new WorkoutItemResponse
             {
-                Sets = i.Sets,
-                Reps = i.Reps,
-                Weight = i.Weight,
+                Sets = i.Sets.Select(set => new WorkoutSetResponse
+                {
+                    Reps = set.Reps,
+                    Weight = set.Weight
+                }).ToList(),
                 Order = i.Order,
                 Comment = i.Comment,
                 Exercise = new ExerciseResponse(

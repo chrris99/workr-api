@@ -31,8 +31,11 @@ public class WorkoutTemplateResponseMapper : ResponseMapper<WorkoutTemplateRespo
                             exercise.Instructions,
                             exercise.SecondaryMuscleGroups),
                         Order = itemTemplate.Order,
-                        Sets = itemTemplate.Sets,
-                        Reps = itemTemplate.Reps,
+                        Sets = itemTemplate.Sets.Select(setTemplate => new WorkoutSetTemplateResponse
+                        {
+                            Reps = setTemplate.Reps,
+                            Weight = setTemplate.Weight
+                        }).ToList(),
                         Comment = itemTemplate.Comment
                     };
                 }).ToList()

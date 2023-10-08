@@ -23,10 +23,14 @@ public sealed class CreateWorkoutBlockRequest
 
 public sealed class CreateWorkoutItemRequest
 {
-    public int Sets { get; set; }
-    public int Reps { get; set; }
-    public int Weight { get; set; }
+    public List<CreateWorkoutSetRequest> Sets { get; set; }
     public int Order { get; set; }
     public string? Comment { get; set; }
     public Guid ExerciseId { get; set; }
+}
+
+public sealed class CreateWorkoutSetRequest
+{
+    public int Reps { get; set; }
+    public int Weight { get; set; }
 }

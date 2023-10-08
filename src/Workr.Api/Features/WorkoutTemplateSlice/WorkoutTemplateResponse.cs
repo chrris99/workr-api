@@ -20,8 +20,13 @@ public sealed class WorkoutItemTemplateResponse
 {
     public ExerciseResponse Exercise { get; set; }
     
-    public int Sets { get; set; }
-    public int  Reps { get; set; }
+    public List<WorkoutSetTemplateResponse> Sets { get; set; }
     public int Order { get; set; }
     public string? Comment { get; set; }
+}
+
+public sealed class WorkoutSetTemplateResponse
+{
+    public int Reps { get; set; }
+    public int Weight { get; set; }
 }

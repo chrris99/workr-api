@@ -21,10 +21,18 @@ public sealed class WorkoutEntityConfiguration : IEntityTypeConfiguration<Workou
         builder.OwnsMany(w => w.Blocks, blockBuilder =>
         {
             blockBuilder.ToTable("WorkoutBlocks");
+            blockBuilder.WithOwner().HasForeignKey("WorkoutId");
             
             blockBuilder.OwnsMany(wb => wb.Items, itemBuilder =>
             {
                 itemBuilder.ToTable("WorkoutItems");
+                itemBuilder.WithOwner().HasForeignKey("WorkoutId", "WorkoutBlockId");
+                
+                itemBuilder.OwnsMany(ib => ib.Sets, setBuilder =>
+                {
+                    setBuilder.ToTable("WorkoutSets");
+                    setBuilder.WithOwner().HasForeignKey("WorkoutId", "WorkoutBlockId", "WorkoutItemId");
+                });
             });
         });
     }

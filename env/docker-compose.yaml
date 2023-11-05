@@ -1,6 +1,17 @@
-version: '3.8'
+version: "3.8"
 
 services:
+  api:
+    build:
+      context: ../src/
+    image: api
+    environment:
+      - ConnectionStrings__Postgres=Server=postgres-db;Port=5432;Database=workr;User Id=postgres;Password=admin;
+      - Jwt__Key=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnfioJBVVbDfDr6PSvdxhFyctQr+YB1pNs8+oxH3pOIjalIi3FBVlIUtywCkFs1bZCnz5r1d5TLKdU/8vJHvc6OPWGUSrDQW6g4pBSZRpSopPaT5OW+zAYOiToH3qT4AMsifg28wYBwfQE3hiJja5izx+8ZZXeTSRwDlAhw6yjdj/L5kXwW4NhGc+09vc6cL8V9KPKYLFrwBHWZQiMAtiqUeCb/omUQjODOZV+uSotOsWffKdmY/myCuPL8aHqfyMwWMzWdb8To3RDYia0KRrhgG2Q/wr8TyqdNvq6OyZCIoyV/aZW9wL0ZSpj8jEBIdofRF4i6DvbSqnLSXrVEDctwIDAQAB
+    ports:
+      - 5117:8080
+    depends_on:
+      - postgres-db
   postgres-db:
     image: postgres
     restart: always

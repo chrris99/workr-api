@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Workr.Infrastructure.Persistence;
@@ -12,9 +13,11 @@ using Workr.Infrastructure.Persistence;
 namespace Workr.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231119110856_AccessoryTable")]
+    partial class AccessoryTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -23,22 +26,7 @@ namespace Workr.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("EquipmentExercise", b =>
-                {
-                    b.Property<Guid>("EquipmentId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("ExercisesId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("EquipmentId", "ExercisesId");
-
-                    b.HasIndex("ExercisesId");
-
-                    b.ToTable("EquipmentExercise");
-                });
-
-            modelBuilder.Entity("Workr.Domain.Accessory.Equipment", b =>
+            modelBuilder.Entity("Workr.Domain.Accessory.Accessory", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -62,43 +50,43 @@ namespace Workr.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("84967d74-50c6-40e5-9199-30d97ff95e8d"),
+                            Id = new Guid("23ea38b8-49f2-463f-a212-9b216256b422"),
                             Name = "Kettlebell",
                             Weight = true
                         },
                         new
                         {
-                            Id = new Guid("383fb7ac-1f4a-4bf7-9cbb-1cef985c29eb"),
+                            Id = new Guid("ea8976e5-bd2c-4abb-a77c-70ff48ffb60c"),
                             Name = "Dumbbell",
                             Weight = true
                         },
                         new
                         {
-                            Id = new Guid("001cb876-cdf6-4625-a2f0-2c414f953ef8"),
+                            Id = new Guid("1adff2cf-f2ec-4c05-9f9b-70cad12caa98"),
                             Name = "Barbell",
                             Weight = true
                         },
                         new
                         {
-                            Id = new Guid("52d4c2b3-16a1-401d-8679-8a930b067f8c"),
+                            Id = new Guid("c6b0b90c-6606-4941-82d2-56d81fc7f44c"),
                             Name = "Bar",
                             Weight = false
                         },
                         new
                         {
-                            Id = new Guid("1267a8b7-120b-456a-a4f2-f9853338260e"),
+                            Id = new Guid("508ad1c9-7ada-48ae-9e0b-a455354f9cf4"),
                             Name = "Treadmill",
                             Weight = false
                         },
                         new
                         {
-                            Id = new Guid("4b1ffdc4-53ff-4ef0-acdf-e4496e3abf82"),
+                            Id = new Guid("3207f226-e0c6-416b-8a79-39efcdbc33d6"),
                             Name = "Bike",
                             Weight = false
                         },
                         new
                         {
-                            Id = new Guid("af1d8cde-512c-4e8c-87b4-5ef056a71a73"),
+                            Id = new Guid("28fc4803-de23-4d56-8a55-0509cb7d2c2d"),
                             Name = "JumpRope",
                             Weight = false
                         });
@@ -254,21 +242,6 @@ namespace Workr.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("WorkoutPlans");
-                });
-
-            modelBuilder.Entity("EquipmentExercise", b =>
-                {
-                    b.HasOne("Workr.Domain.Accessory.Equipment", null)
-                        .WithMany()
-                        .HasForeignKey("EquipmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Workr.Domain.Exercise.Exercise", null)
-                        .WithMany()
-                        .HasForeignKey("ExercisesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Workr.Domain.Workout.Template.WorkoutTemplate", b =>

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Workr.Infrastructure.Persistence;
@@ -12,9 +13,11 @@ using Workr.Infrastructure.Persistence;
 namespace Workr.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231119112621_ExerciseEquipment")]
+    partial class ExerciseEquipment
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,44 +28,17 @@ namespace Workr.Infrastructure.Migrations
 
             modelBuilder.Entity("EquipmentExercise", b =>
                 {
-                    b.Property<Guid>("ExerciseId")
-                        .HasColumnType("uuid");
-
                     b.Property<Guid>("EquipmentId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("ExerciseId", "EquipmentId");
+                    b.Property<Guid>("ExercisesId")
+                        .HasColumnType("uuid");
 
-                    b.HasIndex("EquipmentId");
+                    b.HasKey("EquipmentId", "ExercisesId");
 
-                    b.ToTable("EquipmentExercise", (string)null);
+                    b.HasIndex("ExercisesId");
 
-                    b.HasData(
-                        new
-                        {
-                            ExerciseId = new Guid("60a41714-318d-40ba-98a2-dbe5e2ae8bb5"),
-                            EquipmentId = new Guid("4c9e1eb0-6ab5-44a6-b8dd-e1a9ff4c41bd")
-                        },
-                        new
-                        {
-                            ExerciseId = new Guid("54c07e15-5f68-49b6-9c95-4986c52676f4"),
-                            EquipmentId = new Guid("4c9e1eb0-6ab5-44a6-b8dd-e1a9ff4c41bd")
-                        },
-                        new
-                        {
-                            ExerciseId = new Guid("c2a66847-8319-436c-859f-33b7895c4e4f"),
-                            EquipmentId = new Guid("c1d36df2-0674-4f21-ba67-9f7b4c0d971b")
-                        },
-                        new
-                        {
-                            ExerciseId = new Guid("04d32bd5-4de6-40bc-89c4-67ee7bcdfaf2"),
-                            EquipmentId = new Guid("c1d36df2-0674-4f21-ba67-9f7b4c0d971b")
-                        },
-                        new
-                        {
-                            ExerciseId = new Guid("2627b21a-880f-42fc-8a28-da81e3a4e5ee"),
-                            EquipmentId = new Guid("b634ea02-7da8-4939-a617-3dea58119d96")
-                        });
+                    b.ToTable("EquipmentExercise");
                 });
 
             modelBuilder.Entity("Workr.Domain.Accessory.Equipment", b =>
@@ -89,51 +65,45 @@ namespace Workr.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("2af529f3-728b-4f68-ad13-7854775f08d7"),
+                            Id = new Guid("84967d74-50c6-40e5-9199-30d97ff95e8d"),
                             Name = "Kettlebell",
                             Weight = true
                         },
                         new
                         {
-                            Id = new Guid("c1d36df2-0674-4f21-ba67-9f7b4c0d971b"),
+                            Id = new Guid("383fb7ac-1f4a-4bf7-9cbb-1cef985c29eb"),
                             Name = "Dumbbell",
                             Weight = true
                         },
                         new
                         {
-                            Id = new Guid("4c9e1eb0-6ab5-44a6-b8dd-e1a9ff4c41bd"),
+                            Id = new Guid("001cb876-cdf6-4625-a2f0-2c414f953ef8"),
                             Name = "Barbell",
                             Weight = true
                         },
                         new
                         {
-                            Id = new Guid("933463e2-bc2d-40c0-bcb8-95c0116e4472"),
+                            Id = new Guid("52d4c2b3-16a1-401d-8679-8a930b067f8c"),
                             Name = "Bar",
                             Weight = false
                         },
                         new
                         {
-                            Id = new Guid("1e5e3259-d9dc-4101-b042-231ea31c4744"),
+                            Id = new Guid("1267a8b7-120b-456a-a4f2-f9853338260e"),
                             Name = "Treadmill",
                             Weight = false
                         },
                         new
                         {
-                            Id = new Guid("b12affcf-4498-4423-b505-7bef0129a6f5"),
+                            Id = new Guid("4b1ffdc4-53ff-4ef0-acdf-e4496e3abf82"),
                             Name = "Bike",
                             Weight = false
                         },
                         new
                         {
-                            Id = new Guid("422e35ec-7c4f-4304-abef-8e44f73080e9"),
+                            Id = new Guid("af1d8cde-512c-4e8c-87b4-5ef056a71a73"),
                             Name = "JumpRope",
                             Weight = false
-                        },
-                        new
-                        {
-                            Id = new Guid("b634ea02-7da8-4939-a617-3dea58119d96"),
-                            Name = "Cable",
-                            Weight = true
                         });
                 });
 
@@ -172,75 +142,7 @@ namespace Workr.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Exercises", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("60a41714-318d-40ba-98a2-dbe5e2ae8bb5"),
-                            CreatedBy = "system",
-                            Description = "The barbell bench press is a classic exercise, known as one of the \"big three\" lifts. The bench press is a compound exercise that targets many of the muscles in your upper body.",
-                            ForceType = "push",
-                            ImageUrl = "bench-press-2.png",
-                            Instructions = new List<string> { "Lie flat on a bench and set your hands just outside of shoulder width.", "Set your shoulder blades by pinching them together and driving them into the bench.", "Take a deep breath, lift off and maintain tightness through your upper back.", "Inhale and allow the bar to descend slowly by unlocking the elbows.", "Lower the bar in a straight line to the base of the sternum (breastbone) and touch the chest.", "Push the bar back up in a straight line by pressing yourself into the bench, driving your feet into the floor for leg drive, and extending the elbows." },
-                            Name = "Barbell Bench Press",
-                            SecondaryMuscleGroups = new List<string> { "triceps", "shoulders" },
-                            TargetMuscleGroup = "chest"
-                        },
-                        new
-                        {
-                            Id = new Guid("54c07e15-5f68-49b6-9c95-4986c52676f4"),
-                            CreatedBy = "system",
-                            Description = "The standing barbell curl is the cornerstone of many bicep building routines.",
-                            ForceType = "pull",
-                            ImageUrl = "barbell-bicep-curl-1.png",
-                            Instructions = new List<string> { "Grasp a barbell or Olympic bar at around shoulder width apart using an underhand grip (palms facing up).", "Stand straight up, feet together, back straight, and with your arms fully extended. The bar should not be touching your body.", "Keeping your eyes facing forwards, elbows tucked in at your sides, and your body completely still, slowly curl the bar up.", "Squeeze your biceps hard at the top of the movement, and then slowly lower it back to the starting position." },
-                            Name = "Standing Barbell Curl",
-                            TargetMuscleGroup = "biceps"
-                        },
-                        new
-                        {
-                            Id = new Guid("04d32bd5-4de6-40bc-89c4-67ee7bcdfaf2"),
-                            CreatedBy = "system",
-                            ForceType = "push",
-                            ImageUrl = "dumbbell-bicep-curl-1.png",
-                            Instructions = new List<string>(),
-                            Name = "Dumbbell Bicep Curl",
-                            TargetMuscleGroup = "biceps"
-                        },
-                        new
-                        {
-                            Id = new Guid("c2a66847-8319-436c-859f-33b7895c4e4f"),
-                            CreatedBy = "system",
-                            Description = "The dumbbell goblet squat is a variation of the squat and is used to build the muscles of the legs. In particular, the dumbbell goblet squat places a lot of emphasis on the quads.",
-                            ForceType = "push",
-                            ImageUrl = "dumbbell-squat-1.png",
-                            Instructions = new List<string> { "Select a dumbbell and position it at chest height with one hand under each edge of the dumbbell.", "Take a deep breath and descend by simultaneously pushing the hips back and bending the knees.", "Once your thighs reach parallel with the floor, begin to reverse the movement.", "Keep your abs braced and drive your feet through the floor, to get back to the starting position." },
-                            Name = "Dumbbell Goblet Squat",
-                            TargetMuscleGroup = "quads"
-                        },
-                        new
-                        {
-                            Id = new Guid("c1cb1145-5e02-4dd1-8983-564ec95a22f4"),
-                            CreatedBy = "system",
-                            Description = "The push up is an exercise used to target the muscles of the chest. It also indirectly works the muscles of the shoulder, triceps, and core.",
-                            ForceType = "push",
-                            ImageUrl = "push-up.png",
-                            Instructions = new List<string>(),
-                            Name = "Push Up",
-                            SecondaryMuscleGroups = new List<string> { "shoulders", "triceps", "abs" },
-                            TargetMuscleGroup = "chest"
-                        },
-                        new
-                        {
-                            Id = new Guid("2627b21a-880f-42fc-8a28-da81e3a4e5ee"),
-                            CreatedBy = "system",
-                            Description = "Test description",
-                            ForceType = "push",
-                            ImageUrl = "cable-machine-tricep-extension-1.png",
-                            Name = "Rope Tricep Extension",
-                            TargetMuscleGroup = "triceps"
-                        });
+                    b.ToTable("Exercises");
                 });
 
             modelBuilder.Entity("Workr.Domain.Workout.Template.WorkoutTemplate", b =>
@@ -354,7 +256,7 @@ namespace Workr.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WorkoutPlans", (string)null);
+                    b.ToTable("WorkoutPlans");
                 });
 
             modelBuilder.Entity("EquipmentExercise", b =>
@@ -367,14 +269,14 @@ namespace Workr.Infrastructure.Migrations
 
                     b.HasOne("Workr.Domain.Exercise.Exercise", null)
                         .WithMany()
-                        .HasForeignKey("ExerciseId")
+                        .HasForeignKey("ExercisesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("Workr.Domain.Workout.Template.WorkoutTemplate", b =>
                 {
-                    b.OwnsMany("Workr.Domain.Workout.Template.WorkoutTemplate.BlockTemplates#Workr.Domain.Workout.Template.WorkoutBlockTemplate", "BlockTemplates", b1 =>
+                    b.OwnsMany("Workr.Domain.Workout.Template.WorkoutBlockTemplate", "BlockTemplates", b1 =>
                         {
                             b1.Property<Guid>("WorkoutTemplateId")
                                 .HasColumnType("uuid");
@@ -395,7 +297,7 @@ namespace Workr.Infrastructure.Migrations
                             b1.WithOwner()
                                 .HasForeignKey("WorkoutTemplateId");
 
-                            b1.OwnsMany("Workr.Domain.Workout.Template.WorkoutTemplate.BlockTemplates#Workr.Domain.Workout.Template.WorkoutBlockTemplate.ItemTemplates#Workr.Domain.Workout.Template.WorkoutItemTemplate", "ItemTemplates", b2 =>
+                            b1.OwnsMany("Workr.Domain.Workout.Template.WorkoutItemTemplate", "ItemTemplates", b2 =>
                                 {
                                     b2.Property<Guid>("WorkoutTemplateId")
                                         .HasColumnType("uuid");
@@ -433,7 +335,7 @@ namespace Workr.Infrastructure.Migrations
                                     b2.WithOwner()
                                         .HasForeignKey("WorkoutTemplateId", "WorkoutBlockTemplateId");
 
-                                    b2.OwnsMany("Workr.Domain.Workout.Template.WorkoutTemplate.BlockTemplates#Workr.Domain.Workout.Template.WorkoutBlockTemplate.ItemTemplates#Workr.Domain.Workout.Template.WorkoutItemTemplate.Sets#Workr.Domain.Workout.Template.WorkoutSetTemplate", "Sets", b3 =>
+                                    b2.OwnsMany("Workr.Domain.Workout.Template.WorkoutSetTemplate", "Sets", b3 =>
                                         {
                                             b3.Property<Guid>("WorkoutTemplateId")
                                                 .HasColumnType("uuid");
@@ -481,7 +383,7 @@ namespace Workr.Infrastructure.Migrations
                         .WithMany("Workouts")
                         .HasForeignKey("WorkoutPlanId");
 
-                    b.OwnsMany("Workr.Domain.Workout.Workout.Blocks#Workr.Domain.Workout.WorkoutBlock", "Blocks", b1 =>
+                    b.OwnsMany("Workr.Domain.Workout.WorkoutBlock", "Blocks", b1 =>
                         {
                             b1.Property<Guid>("WorkoutId")
                                 .HasColumnType("uuid");
@@ -506,7 +408,7 @@ namespace Workr.Infrastructure.Migrations
                             b1.WithOwner()
                                 .HasForeignKey("WorkoutId");
 
-                            b1.OwnsMany("Workr.Domain.Workout.Workout.Blocks#Workr.Domain.Workout.WorkoutBlock.Items#Workr.Domain.Workout.WorkoutItem", "Items", b2 =>
+                            b1.OwnsMany("Workr.Domain.Workout.WorkoutItem", "Items", b2 =>
                                 {
                                     b2.Property<Guid>("WorkoutId")
                                         .HasColumnType("uuid");
@@ -551,7 +453,7 @@ namespace Workr.Infrastructure.Migrations
                                     b2.WithOwner()
                                         .HasForeignKey("WorkoutId", "WorkoutBlockId");
 
-                                    b2.OwnsMany("Workr.Domain.Workout.Workout.Blocks#Workr.Domain.Workout.WorkoutBlock.Items#Workr.Domain.Workout.WorkoutItem.Sets#Workr.Domain.Workout.WorkoutSet", "Sets", b3 =>
+                                    b2.OwnsMany("Workr.Domain.Workout.WorkoutSet", "Sets", b3 =>
                                         {
                                             b3.Property<Guid>("WorkoutId")
                                                 .HasColumnType("uuid");

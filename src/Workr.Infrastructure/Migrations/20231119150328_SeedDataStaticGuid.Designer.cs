@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Workr.Infrastructure.Persistence;
@@ -12,9 +13,11 @@ using Workr.Infrastructure.Persistence;
 namespace Workr.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231119150328_SeedDataStaticGuid")]
+    partial class SeedDataStaticGuid
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,7 +38,7 @@ namespace Workr.Infrastructure.Migrations
 
                     b.HasIndex("EquipmentId");
 
-                    b.ToTable("EquipmentExercise", (string)null);
+                    b.ToTable("EquipmentExercise");
 
                     b.HasData(
                         new
@@ -172,7 +175,7 @@ namespace Workr.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Exercises", (string)null);
+                    b.ToTable("Exercises");
 
                     b.HasData(
                         new
@@ -235,7 +238,6 @@ namespace Workr.Infrastructure.Migrations
                         {
                             Id = new Guid("2627b21a-880f-42fc-8a28-da81e3a4e5ee"),
                             CreatedBy = "system",
-                            Description = "Test description",
                             ForceType = "push",
                             ImageUrl = "cable-machine-tricep-extension-1.png",
                             Name = "Rope Tricep Extension",
@@ -354,7 +356,7 @@ namespace Workr.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WorkoutPlans", (string)null);
+                    b.ToTable("WorkoutPlans");
                 });
 
             modelBuilder.Entity("EquipmentExercise", b =>
@@ -374,7 +376,7 @@ namespace Workr.Infrastructure.Migrations
 
             modelBuilder.Entity("Workr.Domain.Workout.Template.WorkoutTemplate", b =>
                 {
-                    b.OwnsMany("Workr.Domain.Workout.Template.WorkoutTemplate.BlockTemplates#Workr.Domain.Workout.Template.WorkoutBlockTemplate", "BlockTemplates", b1 =>
+                    b.OwnsMany("Workr.Domain.Workout.Template.WorkoutBlockTemplate", "BlockTemplates", b1 =>
                         {
                             b1.Property<Guid>("WorkoutTemplateId")
                                 .HasColumnType("uuid");
@@ -395,7 +397,7 @@ namespace Workr.Infrastructure.Migrations
                             b1.WithOwner()
                                 .HasForeignKey("WorkoutTemplateId");
 
-                            b1.OwnsMany("Workr.Domain.Workout.Template.WorkoutTemplate.BlockTemplates#Workr.Domain.Workout.Template.WorkoutBlockTemplate.ItemTemplates#Workr.Domain.Workout.Template.WorkoutItemTemplate", "ItemTemplates", b2 =>
+                            b1.OwnsMany("Workr.Domain.Workout.Template.WorkoutItemTemplate", "ItemTemplates", b2 =>
                                 {
                                     b2.Property<Guid>("WorkoutTemplateId")
                                         .HasColumnType("uuid");
@@ -433,7 +435,7 @@ namespace Workr.Infrastructure.Migrations
                                     b2.WithOwner()
                                         .HasForeignKey("WorkoutTemplateId", "WorkoutBlockTemplateId");
 
-                                    b2.OwnsMany("Workr.Domain.Workout.Template.WorkoutTemplate.BlockTemplates#Workr.Domain.Workout.Template.WorkoutBlockTemplate.ItemTemplates#Workr.Domain.Workout.Template.WorkoutItemTemplate.Sets#Workr.Domain.Workout.Template.WorkoutSetTemplate", "Sets", b3 =>
+                                    b2.OwnsMany("Workr.Domain.Workout.Template.WorkoutSetTemplate", "Sets", b3 =>
                                         {
                                             b3.Property<Guid>("WorkoutTemplateId")
                                                 .HasColumnType("uuid");
@@ -481,7 +483,7 @@ namespace Workr.Infrastructure.Migrations
                         .WithMany("Workouts")
                         .HasForeignKey("WorkoutPlanId");
 
-                    b.OwnsMany("Workr.Domain.Workout.Workout.Blocks#Workr.Domain.Workout.WorkoutBlock", "Blocks", b1 =>
+                    b.OwnsMany("Workr.Domain.Workout.WorkoutBlock", "Blocks", b1 =>
                         {
                             b1.Property<Guid>("WorkoutId")
                                 .HasColumnType("uuid");
@@ -506,7 +508,7 @@ namespace Workr.Infrastructure.Migrations
                             b1.WithOwner()
                                 .HasForeignKey("WorkoutId");
 
-                            b1.OwnsMany("Workr.Domain.Workout.Workout.Blocks#Workr.Domain.Workout.WorkoutBlock.Items#Workr.Domain.Workout.WorkoutItem", "Items", b2 =>
+                            b1.OwnsMany("Workr.Domain.Workout.WorkoutItem", "Items", b2 =>
                                 {
                                     b2.Property<Guid>("WorkoutId")
                                         .HasColumnType("uuid");
@@ -551,7 +553,7 @@ namespace Workr.Infrastructure.Migrations
                                     b2.WithOwner()
                                         .HasForeignKey("WorkoutId", "WorkoutBlockId");
 
-                                    b2.OwnsMany("Workr.Domain.Workout.Workout.Blocks#Workr.Domain.Workout.WorkoutBlock.Items#Workr.Domain.Workout.WorkoutItem.Sets#Workr.Domain.Workout.WorkoutSet", "Sets", b3 =>
+                                    b2.OwnsMany("Workr.Domain.Workout.WorkoutSet", "Sets", b3 =>
                                         {
                                             b3.Property<Guid>("WorkoutId")
                                                 .HasColumnType("uuid");

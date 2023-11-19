@@ -12,8 +12,11 @@ public sealed class ExerciseRepository : IExerciseRepository
 {
     private readonly ApplicationDbContext _context;
 
-    public ExerciseRepository(ApplicationDbContext context) => _context = context;
-    
+    public ExerciseRepository(ApplicationDbContext context)
+    {
+        _context = context;
+    }
+
     public async Task<Result<Exercise>> CreateExercise(Exercise exercise)
     {
         try
@@ -21,7 +24,6 @@ public sealed class ExerciseRepository : IExerciseRepository
             var entity = _context.Exercises.Add(exercise).Entity;
             await _context.SaveChangesAsync();
             return entity;
-
         }
         catch (Exception e)
         {
@@ -38,7 +40,9 @@ public sealed class ExerciseRepository : IExerciseRepository
 
     public async Task<Result<List<Exercise>>> GetExercises()
     {
-        return await _context.Exercises.ToListAsync();
+        return await _context.Exercises
+            .OrderBy(e => e.Name)
+            .ToListAsync();
     }
 
     public async Task<Result> UpdateExercise(Exercise exercise)
@@ -54,7 +58,7 @@ public sealed class ExerciseRepository : IExerciseRepository
         var exercise = await _context.Exercises.FindAsync(exerciseId);
 
         if (exercise == null) return Result.Success();
-        
+
         _context.Exercises.Remove(exercise);
         await _context.SaveChangesAsync();
 

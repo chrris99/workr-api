@@ -1,24 +1,30 @@
+using System.Security.Cryptography.X509Certificates;
+
 namespace Workr.Domain.Accessory;
 
 public static class EquipmentType
 {
+    public static Guid KetllebellId = Guid.NewGuid();
+    public static Guid DumbbellId = Guid.NewGuid();
+    public static Guid BarbellId = Guid.NewGuid();
+
     public static Equipment Kettlebell => new()
     {
-        Id = Guid.NewGuid(),
+        Id = KetllebellId,
         Name = nameof(Kettlebell),
         Weight = true
     };
 
     public static Equipment Dumbbell => new()
     {
-        Id = Guid.NewGuid(),
+        Id = DumbbellId,
         Name = nameof(Dumbbell),
         Weight = true
     };
 
     public static Equipment Barbell => new()
     {
-        Id = Guid.NewGuid(),
+        Id = BarbellId,
         Name = nameof(Barbell),
         Weight = true
     };

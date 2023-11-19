@@ -1,14 +1,15 @@
-using Workr.Domain.Accessory;
+using Workr.Domain.Exercise;
 
-namespace Workr.Domain.Exercise;
+namespace Workr.Infrastructure.Persistence.Seed;
 
-public static class SystemExercise
+public static class SystemExerciseData
 {
-    public static readonly Guid BarbellBenchPressId = Guid.NewGuid();
-    public static readonly Guid StandingBarbellCurlId = Guid.NewGuid();
-    public static readonly Guid DumbbellGobletSquatId = Guid.NewGuid();
-    public static readonly Guid DumbbellBicepCurlId = Guid.NewGuid();
-    public static readonly Guid PushUpId = Guid.NewGuid();
+    public static readonly Guid BarbellBenchPressId = Guid.Parse("60a41714-318d-40ba-98a2-dbe5e2ae8bb5");
+    public static readonly Guid StandingBarbellCurlId = Guid.Parse("54c07e15-5f68-49b6-9c95-4986c52676f4");
+    public static readonly Guid DumbbellGobletSquatId = Guid.Parse("c2a66847-8319-436c-859f-33b7895c4e4f");
+    public static readonly Guid DumbbellBicepCurlId = Guid.Parse("04d32bd5-4de6-40bc-89c4-67ee7bcdfaf2");
+    public static readonly Guid PushUpId = Guid.Parse("c1cb1145-5e02-4dd1-8983-564ec95a22f4");
+    public static readonly Guid RopeTricepExtensionId = Guid.Parse("2627b21a-880f-42fc-8a28-da81e3a4e5ee");
 
     public static readonly Exercise BarbellBenchPress = new()
     {
@@ -70,9 +71,8 @@ public static class SystemExercise
     {
         Id = DumbbellBicepCurlId,
         Name = "Dumbbell Bicep Curl",
-        Description = "TODO",
         TargetMuscleGroup = Muscle.Biceps,
-        ImageUrl = "bench-press-2.png",
+        ImageUrl = "dumbbell-bicep-curl-1.png",
         ForceType = ForceType.Push,
         Instructions = new List<string>()
     };
@@ -90,5 +90,15 @@ public static class SystemExercise
         Instructions = new List<string>
         {
         }
+    };
+
+    public static readonly Exercise RopeTricepExtension = new()
+    {
+        Id = RopeTricepExtensionId,
+        Name = "Rope Tricep Extension",
+        Description = "Test description",
+        TargetMuscleGroup = Muscle.Triceps,
+        ImageUrl = "cable-machine-tricep-extension-1.png",
+        ForceType = ForceType.Push
     };
 }

@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Workr.Domain.Accessory;
 using Workr.Domain.Exercise;
+using Workr.Infrastructure.Persistence.Seed;
 
 namespace Workr.Infrastructure.Persistence.Configurations;
 
@@ -10,11 +11,12 @@ public class ExerciseEntityConfiguration : IEntityTypeConfiguration<Exercise>
     public void Configure(EntityTypeBuilder<Exercise> builder)
     {
         builder.HasData(
-            SystemExercise.BarbellBenchPress,
-            SystemExercise.StandingBarbellCurl,
-            SystemExercise.DumbbellBicepCurl,
-            SystemExercise.DumbbellGobletSquat,
-            SystemExercise.PushUp);
+            SystemExerciseData.BarbellBenchPress,
+            SystemExerciseData.StandingBarbellCurl,
+            SystemExerciseData.DumbbellBicepCurl,
+            SystemExerciseData.DumbbellGobletSquat,
+            SystemExerciseData.PushUp,
+            SystemExerciseData.RopeTricepExtension);
 
 
         builder
@@ -31,19 +33,24 @@ public class ExerciseEntityConfiguration : IEntityTypeConfiguration<Exercise>
                     join.HasData(
                         new
                         {
-                            ExerciseId = SystemExercise.BarbellBenchPressId, EquipmentId = EquipmentType.BarbellId
+                            ExerciseId = SystemExerciseData.BarbellBenchPressId, EquipmentId = EquipmentData.BarbellId
                         },
                         new
                         {
-                            ExerciseId = SystemExercise.StandingBarbellCurlId, EquipmentId = EquipmentType.BarbellId
+                            ExerciseId = SystemExerciseData.StandingBarbellCurlId, EquipmentId = EquipmentData.BarbellId
                         },
                         new
                         {
-                            ExerciseId = SystemExercise.DumbbellGobletSquatId, EquipmentId = EquipmentType.DumbbellId
+                            ExerciseId = SystemExerciseData.DumbbellGobletSquatId,
+                            EquipmentId = EquipmentData.DumbbellId
                         },
                         new
                         {
-                            ExerciseId = SystemExercise.DumbbellBicepCurlId, EquipmentId = EquipmentType.DumbbellId
+                            ExerciseId = SystemExerciseData.DumbbellBicepCurlId, EquipmentId = EquipmentData.DumbbellId
+                        },
+                        new
+                        {
+                            ExerciseId = SystemExerciseData.RopeTricepExtensionId, EquipmentId = EquipmentData.CableId
                         });
                 });
     }

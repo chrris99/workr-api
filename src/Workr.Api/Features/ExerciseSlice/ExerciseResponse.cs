@@ -6,5 +6,6 @@ public record ExerciseResponse(
     string TargetMuscleGroup,
     string? Description,
     string? ForceType,
+    string? ImageUrl,
     List<string>? Instructions,
     List<string>? SecondaryMuscleGroups);

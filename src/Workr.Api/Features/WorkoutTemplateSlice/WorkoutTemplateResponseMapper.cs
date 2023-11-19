@@ -6,40 +6,44 @@ namespace Workr.Web.Features.WorkoutTemplateSlice;
 
 public class WorkoutTemplateResponseMapper : ResponseMapper<WorkoutTemplateResponse, WorkoutTemplate>
 {
-    public override WorkoutTemplateResponse FromEntity(WorkoutTemplate e) => new()
+    public override WorkoutTemplateResponse FromEntity(WorkoutTemplate e)
     {
-        Id = e.Id,
-        Name = e.Name,
-        Description = e.Description,
-        BlockTemplates = e.BlockTemplates.Select(blockTemplate =>
+        return new()
         {
-            return new WorkoutBlockTemplateResponse
+            Id = e.Id,
+            Name = e.Name,
+            Description = e.Description,
+            BlockTemplates = e.BlockTemplates.Select(blockTemplate =>
             {
-                Order = blockTemplate.Order,
-                ItemTemplates = blockTemplate.ItemTemplates.Select(itemTemplate =>
+                return new WorkoutBlockTemplateResponse
                 {
-                    var exercise = itemTemplate.Exercise;
-
-                    return new WorkoutItemTemplateResponse
+                    Order = blockTemplate.Order,
+                    ItemTemplates = blockTemplate.ItemTemplates.Select(itemTemplate =>
                     {
-                        Exercise = new ExerciseResponse(
-                            exercise.Id.ToString(),
-                            exercise.Name,
-                            exercise.TargetMuscleGroup,
-                            exercise.Description,
-                            exercise.ForceType,
-                            exercise.Instructions,
-                            exercise.SecondaryMuscleGroups),
-                        Order = itemTemplate.Order,
-                        Sets = itemTemplate.Sets.Select(setTemplate => new WorkoutSetTemplateResponse
+                        var exercise = itemTemplate.Exercise;
+
+                        return new WorkoutItemTemplateResponse
                         {
-                            Reps = setTemplate.Reps,
-                            Weight = setTemplate.Weight
-                        }).ToList(),
-                        Comment = itemTemplate.Comment
-                    };
-                }).ToList()
-            };
-        }).ToList()
-    };
+                            Exercise = new ExerciseResponse(
+                                exercise.Id.ToString(),
+                                exercise.Name,
+                                exercise.TargetMuscleGroup,
+                                exercise.Description,
+                                exercise.ForceType,
+                                exercise.ImageUrl,
+                                exercise.Instructions,
+                                exercise.SecondaryMuscleGroups),
+                            Order = itemTemplate.Order,
+                            Sets = itemTemplate.Sets.Select(setTemplate => new WorkoutSetTemplateResponse
+                            {
+                                Reps = setTemplate.Reps,
+                                Weight = setTemplate.Weight
+                            }).ToList(),
+                            Comment = itemTemplate.Comment
+                        };
+                    }).ToList()
+                };
+            }).ToList()
+        };
+    }
 }
